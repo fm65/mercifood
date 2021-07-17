@@ -1,0 +1,29 @@
+<div id="app">
+  <div class="header">
+    <div class="navbar-logo" [routerLink]="'/home'">
+      <img class="logo" src="assets/img/logo.svg" alt="logo">
+      <a class="navbar-brand"><h3>Mercifood</h3></a>
+    </div>
+      <nav>
+        <div class="search-box">
+          <div class="search">
+             <input type="text" class="search-input" placeholder="Search...">
+             <button type="submit" class="search-button">
+               <i class="fa fa-search"></i>
+            </button>
+          </div>
+       </div>
+      </nav>
+      <a class="btn login" [routerLink]="'/login'"><button>Se conneter</button></a>
+  </div>
+  
+  <div class="container">
+    <header class="jumbotron">
+      <p>{{ content }}</p>
+    </header>
+  </div>
+  
+  <div class="footer">
+    <p>Mercifood est une application web qui permet de partager de la nourriture autour de soi. </p>
+  </div>
+</div>

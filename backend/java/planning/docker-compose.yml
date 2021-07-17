@@ -1,0 +1,24 @@
+version: '2'
+services:
+        db:
+                image: mysql:5.5
+                volumes: 
+                        - /var/lib/mysql
+                ports:
+                        - "3306:3306"
+                environment:
+                        MYSQL_ROOT_PASSWORD: root
+                        MYSQL_DATABASE: home_projects
+                        MYSQL_USER: root
+                        MYSQL_PASSWORD: root
+
+
+        myadmin:
+                image: phpmyadmin/phpmyadmin
+                ports: 
+                - "8081:80"
+                volumes: 
+                        - /var/lib/mysql
+                links:
+                        - db:db
+
