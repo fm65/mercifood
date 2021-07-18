@@ -16,7 +16,7 @@ public class App {
         Data recovering and application starting
         */
             Database.setup();
-            System.out.println(Database.getHome().start().getProjects());
+            Database.getHome().connection();
         } catch (ClassNotFoundException e) {
             printWriter.println(e);
             printWriter.close ();

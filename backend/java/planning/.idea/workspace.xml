@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="planning:jar" />
+      <artifact name="planning_interface:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
@@ -65,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.AppInterface">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="planning" />
@@ -86,8 +86,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.AppInterface" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JAR Application.mysql-connector-java-5.0.5-bin.jar" />
       </list>
     </recent_temporary>

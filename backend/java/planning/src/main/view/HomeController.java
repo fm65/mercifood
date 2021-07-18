@@ -52,8 +52,6 @@ public class HomeController {
 
     @FXML
     private void initialize() throws ClassNotFoundException, FileNotFoundException {
-        Database.setup();
-
         /*
         Set the projects table
          */

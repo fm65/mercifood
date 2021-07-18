@@ -69,9 +69,11 @@ public class ProjectEditController {
         }
 
         if(deadlineField.getText() != null) {
-            project.setDeadline(LocalDate.parse(deadlineField.getText()));
-            String deadlineRequest = "UPDATE project SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_project = "+projectId+";";
-            Database.update(deadlineRequest);
+            if(LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
+                project.setDeadline(LocalDate.parse(deadlineField.getText()));
+                String deadlineRequest = "UPDATE project SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_project = "+projectId+";";
+                Database.update(deadlineRequest);
+            }
         } else {
             project.setDeadline(null);
             String deadlineRequest = "UPDATE project SET deadline = "+null+" WHERE id_project = "+projectId+";";
@@ -79,9 +81,11 @@ public class ProjectEditController {
         }
 
         if(nextAppointmentField.getText() != null) {
-            project.setNextAppointment(LocalDate.parse(nextAppointmentField.getText()));
-            String nextAppointmentRequest = "UPDATE project SET nextAppointment = '" + LocalDate.parse(nextAppointmentField.getText()) + "' WHERE id_project = " + projectId + ";";
-            Database.update(nextAppointmentRequest);
+            if(LocalDate.parse(nextAppointmentField.getText()).isEqual(LocalDate.now()) || LocalDate.parse(nextAppointmentField.getText()).isAfter(LocalDate.now())) {
+                project.setNextAppointment(LocalDate.parse(nextAppointmentField.getText()));
+                String nextAppointmentRequest = "UPDATE project SET nextAppointment = '" + LocalDate.parse(nextAppointmentField.getText()) + "' WHERE id_project = " + projectId + ";";
+                Database.update(nextAppointmentRequest);
+            }
         } else {
             project.setNextAppointment(null);
             String nextAppointmentRequest = "UPDATE project SET nextAppointment = " +null+ " WHERE id_project = " + projectId + ";";

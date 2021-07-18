@@ -1,5 +1,6 @@
 package models;
 
+import database.Account;
 import database.Database;
 
 import java.io.FileNotFoundException;
@@ -67,6 +68,45 @@ public class Home {
 
     public String getHomeChoices() {
         return "1. Create a new project\n2. Update an existing project\n3. Nothing\n";
+    }
+
+    public void connection() throws FileNotFoundException {
+        Scanner scanner = new Scanner( System.in );
+        String username ="";
+        String password ="";
+        System.out.println("Connection");
+        System.out.println("**********\n");
+        do {
+
+            System.out.println("Username: ");
+            username = scanner.next();
+
+            System.out.println("Password: ");
+            password = scanner.next();
+
+            /*
+            Launch App only if account exists
+             */
+            if(accountExists(username, password)) {
+                System.out.println(this.start().getProjects());
+            } else {
+                System.out.println("Unknown user\n");
+            }
+        } while(!accountExists(username,password));
+
+    }
+
+    private boolean accountExists(String username, String password) {
+        Account account = new Account(username, password);
+
+        for(Account existingAccount:Database.getAccounts()) {
+            if (existingAccount.getUser().equals(account.getUser())) {
+                if(existingAccount.getPassword().equals(account.getPassword())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public Home start() throws FileNotFoundException {

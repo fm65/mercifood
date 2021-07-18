@@ -13,10 +13,12 @@ public class AppInterface extends Application {
     public void start(Stage primaryStage) throws Exception{
         PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("view/Home.fxml"));
-            primaryStage.setTitle("Project Planning");
+            Database.setup();
+            Parent root = FXMLLoader.load(getClass().getResource("view/Connexion.fxml"));
+            primaryStage.setTitle("Connexion");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+
         } catch (Exception e){
             printWriter.println(e);
             printWriter.close ();

@@ -153,9 +153,11 @@ public class TaskEditController {
         }
 
         if(deadlineField.getText() != null ) {
-            task.setDeadline(LocalDate.parse(deadlineField.getText()));
-            String deadlineRequest = "UPDATE task SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_task = "+taskId+";";
-            Database.update(deadlineRequest);
+            if(LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
+                task.setDeadline(LocalDate.parse(deadlineField.getText()));
+                String deadlineRequest = "UPDATE task SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_task = "+taskId+";";
+                Database.update(deadlineRequest);
+            }
         } else {
             task.setDeadline(null);
             String deadlineRequest = "UPDATE task SET deadline = "+null+" WHERE id_task = "+taskId+";";

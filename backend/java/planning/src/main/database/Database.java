@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
 
@@ -24,6 +25,7 @@ public class Database {
     private static Connection connection;
     private static Statement statement;
 
+    private static ArrayList<Account> accounts;
     private static Home home = new Home();
     private static ArrayList<Project> projects;
     private static ArrayList<Member> members;
@@ -43,14 +45,16 @@ public class Database {
     }
 
     public static ObservableList<Project> getProjectsView() {
-
         return projectsView;
     }
 
+    public static ArrayList<Account> getAccounts() {
+        return accounts;
+    }
 
     /*
-    Connection and database settings
-     */
+        Connection and database settings
+         */
     public static void setup() throws FileNotFoundException, ClassNotFoundException {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
@@ -59,10 +63,12 @@ public class Database {
         try {
             connection = DriverManager.getConnection(url,user,password);
             statement = connection.createStatement();
+            createTableAccount("account");
             createTableHome("home");
             createTableProject("project");
             createTableMember("member");
             createTableTask("task");
+            insertIntoAccount();
             insertIntoHome();
 
            getOldData();
@@ -76,6 +82,22 @@ public class Database {
     /*
     Tables Creation
      */
+    public static void createTableAccount(String name) throws FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
+
+        try {
+            String sqlCreate = "CREATE TABLE IF NOT EXISTS " + name
+                    + "  (id_user           INTEGER AUTO_INCREMENT primary key,"
+                    + "name VARCHAR(20),"
+                    + "password VARCHAR(20))";
+
+            statement.execute(sqlCreate);
+        } catch (SQLException e) {
+            System.out.println(e);
+            printWriter.println(e);
+        }
+    }
+
     public static void createTableHome(String name) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
@@ -149,6 +171,18 @@ public class Database {
         }
     }
 
+    public static void insertIntoAccount() throws FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
+
+        try {
+            statement.executeUpdate("REPLACE INTO account (id_user,name,password) VALUES (1,'guest','guest3AL')");
+            statement.executeUpdate("REPLACE INTO account (name,password) VALUES ('fidel','fidelm3AL')");
+            statement.executeUpdate("REPLACE INTO account (name,password) VALUES ('halisia','halisiah3AL')");
+        } catch (SQLException e) {
+            printWriter.println(e);
+        }
+    }
+
     public static void insertIntoHome() throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
@@ -174,9 +208,30 @@ public class Database {
                 home.setName(result.getString("name"));
             }
 
+            getFromAccount();
             getFromProject(home);
             getFromMember();
             getFromTasks();
+
+        } catch (SQLException e) {
+            printWriter.println(e);
+        }
+    }
+
+    public static void getFromAccount() throws FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        accounts = new ArrayList<Account>();
+        try {
+            String sql = "SELECT * FROM account";
+            ResultSet result = statement.executeQuery(sql);
+
+            while ( result.next() ) {
+                String user = result.getString("name");
+                String password = result.getString("password");
+                Account account = new Account(user, password);
+                accounts.add(account);
+            }
+
         } catch (SQLException e) {
             printWriter.println(e);
         }
