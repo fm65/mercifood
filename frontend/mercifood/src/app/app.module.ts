@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { PlateComponent } from './components/plate/plate.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     RecipeComponent,
     HomeComponent,
     ProfileComponent,
-    BoardAdminComponent
+    BoardAdminComponent,
+    PlateComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { PlateComponent } from './components/plate/plate.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'user', component: ProfileComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'plate', component: PlateComponent },
   //{ path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
