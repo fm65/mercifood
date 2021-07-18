@@ -9,7 +9,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class AppComponent {
   title = 'Mercifood';
-  private roles: string[] = [];
+  private role: number[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -22,10 +22,10 @@ export class AppComponent {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+      this.role = user.role;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.showAdminBoard = this.role.includes(1);     //ROLE_ADMIN
+      this.showModeratorBoard = this.role.includes(0); //ROLE_USER
 
       this.username = user.username;
     }
