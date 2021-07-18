@@ -28,7 +28,8 @@ export default function(sequelize: Sequelize): ModelCtor<RecipeInstance> {
     return sequelize.define<RecipeInstance>("Recipe", {
         id: {
             type: DataTypes.BIGINT,
-            primaryKey   : true
+            primaryKey   : true,
+            autoIncrement: true
         },
         name: {
             type  : DataTypes.STRING

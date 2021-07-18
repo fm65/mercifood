@@ -18,24 +18,24 @@ export class PlateComponent implements OnInit {
   // isLoggedIn = true;
   isSuccessful = false;
   errorMessage = '';
-  isShareFailed = false;
+  isSharedFailed = false;
 
-  constructor(private registerService: PlateService) { }
+  constructor(private plateService: PlateService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
     const { name, quantity, comment, photo } = this.form;
-    this.registerService.share(name, quantity, comment, photo).subscribe(
+    this.plateService.share(name, quantity, comment, photo).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
-        this.isShareFailed = false;
+        this.isSharedFailed = false;
       },
       err => {
         this.errorMessage = err.error.message;
-        this.isShareFailed = true;
+        this.isSharedFailed = true;
       }
     )
 

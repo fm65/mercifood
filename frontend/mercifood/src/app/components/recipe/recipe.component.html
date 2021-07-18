@@ -1,1 +1,67 @@
-<p>recipe works!</p>
+<div class="auth">
+  <div class="title">Add a recipe</div>
+  <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+
+    <div class="field">
+      <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          #name="ngModel"
+      />
+      <label for="name">Name</label>
+      <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="name.errors && f.submitted"
+        >
+          Name is required!
+        </div>
+    </div>
+
+    <div class="field">
+      <input
+          type="text"
+          class="form-control"
+          name="ingredients"
+          [(ngModel)]="form.ingredients"
+          required
+          minlength="1"
+          #ingredients="ngModel"
+        />
+        <label for="ingredients">Ingredients</label>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="ingredients.errors && f.submitted"
+        >
+          Ingredients are required!
+        </div>
+    </div>
+
+    <div class="field">
+      <input
+          type="text"
+          class="form-control"
+          name="note"
+          [(ngModel)]="form.note"
+          #note="ngModel"
+      />
+      <label for="note">Note</label>
+    </div>
+
+    <div class="field"><input type="submit" value="ADD"></div>
+
+  </form>
+
+  <!-- <div class="alert alert-success" *ngIf="isLoggedIn">
+    Logged in as {{ roles }}.
+  </div> -->
+</div>

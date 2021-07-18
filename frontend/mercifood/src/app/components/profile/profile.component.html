@@ -29,7 +29,7 @@
       </li>
     </ul>
 </div>
-  
+
   <ng-template #loggedOut>
     Please login.
   </ng-template>
@@ -51,5 +51,6 @@
   <div class="field">
     <h2>Email: {{ currentUser.email }}</h2>
   </div>
-  
+  <a [routerLink]="'/editprofile'">Edit</a>
+
 </div>

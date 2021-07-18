@@ -1,0 +1,205 @@
+<div class="auth">
+  <div class="title">Edit Profile</div>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="field">
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          [(ngModel)]="form.firstname"
+          required
+          minlength="2"
+          maxlength="20"
+          #firstname="ngModel"
+        />
+        <label for="firstname">Firstname</label>
+        <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+          <div *ngIf="firstname.errors.required">Firstname is required</div>
+          <div *ngIf="firstname.errors.minlength">
+            Firstname must be at least 2 characters
+          </div>
+          <div *ngIf="firstname.errors.maxlength">
+            Firstname must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          [(ngModel)]="form.lastname"
+          required
+          minlength="2"
+          maxlength="20"
+          #lastname="ngModel"
+        />
+        <label for="lastname">Lastname</label>
+        <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+          <div *ngIf="lastname.errors.required">Lastname is required</div>
+          <div *ngIf="lastname.errors.minlength">
+            Lastname must be at least 2 characters
+          </div>
+          <div *ngIf="lastname.errors.maxlength">
+            Lastname must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+        />
+        <label for="username">Username</label>
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.minlength">
+            Username must be at least 3 characters
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Username must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <label for="email">Email</label>
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <label for="password">Password</label>
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          type="number"
+          class="form-control"
+          name="number"
+          [(ngModel)]="form.number"
+          minlength="10"
+          #number="ngModel"
+        />
+        <label for="number">Phone number</label>
+      </div>
+
+      <div class="field">
+        <input
+          type="address"
+          class="form-control"
+          name="address"
+          [(ngModel)]="form.address"
+          minlength="10"
+          #address="ngModel"
+        />
+        <label for="address">Address</label>
+      </div>
+
+      <div class="field">
+        <input
+          type="zipcode"
+          class="form-control"
+          name="zipcode"
+          [(ngModel)]="form.zipcode"
+          minlength="10"
+          #zipcode="ngModel"
+        />
+        <label for="zipcode">Zip code</label>
+      </div>
+
+      <div class="field">
+        <input
+          type="city"
+          class="form-control"
+          name="city"
+          [(ngModel)]="form.city"
+          minlength="10"
+          #city="ngModel"
+        />
+        <label for="city">City</label>
+      </div>
+
+      <div class="field">
+        <input
+          type="canteat"
+          class="form-control"
+          name="canteat"
+          [(ngModel)]="form.canteat"
+          minlength="10"
+          #canteat="ngModel"
+        />
+        <label for="canteat">What can't you eat</label>
+      </div>
+
+      <div class="field">
+        <input
+          type="bio"
+          class="form-control"
+          name="bio"
+          [(ngModel)]="form.bio"
+          minlength="10"
+          #bio="ngModel"
+        />
+        <label for="bio">Bio</label>
+      </div>
+
+      <div class="field">
+        <input type="file"
+         id="photo" name="photo"
+         accept="image/png, image/jpeg">
+      </div>
+
+      <div class="field"><input type="submit" value="EDIT PROFILE"></div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isEditedFailed">
+        Update profile failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your update is successful!
+    </div>
+</div>
