@@ -19,14 +19,14 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-
+    
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.role = user.role;
 
-      this.showAdminBoard = this.role.includes(1);     //ROLE_ADMIN
-      this.showModeratorBoard = this.role.includes(0); //ROLE_USER
-
+      //this.showAdminBoard = this.role.includes(1);     //ROLE_ADMIN
+      //this.showModeratorBoard = this.role.includes(0); //ROLE_USER
+      
       this.username = user.username;
     }
   }
