@@ -29,7 +29,7 @@ export class AuthController {
         return await this.User.create(props);
     }
 
-    public async log(username: string, password: string): Promise<SessionInstance | null> {
+    public async log(username: string, password: string): Promise<any> {
         const passwordHashed = await hash(password, 5);
         const user = await this.User.findOne({
             where: {
@@ -49,6 +49,6 @@ export class AuthController {
             token,
         });
         await session.setUser(user);
-        return session;
+        return {session, user};
     }
 }

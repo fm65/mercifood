@@ -57,13 +57,14 @@ authRouter.post("/login", async function (req, res) {
         return;
     }
     const authController = await AuthController.getInstance();
-    const session = await authController.log(username, password);
-    if (session === null) {
+    const data = await authController.log(username, password);
+    if (data === null) {
         res.status(404).send({error: 'Invalid user login'}).end();
         return;
     } else {
         res.json({
-            token: session.token
+            token: data.session.token,
+            user: data.user
         });
     }
 });

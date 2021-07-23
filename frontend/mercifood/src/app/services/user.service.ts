@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserProps } from '../../../../../backend/api/mercifood/models/user.model';
 
-const API_URL = 'http://localhost:3000/user/';
+const API_URL = 'http://localhost:3000/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +14,27 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+    return this.http.get(API_URL + '/all', { responseType: 'text' });
   }
 
   getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+    return this.http.get(API_URL + '/user', { responseType: 'text' });
   }
 
   getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
+    return this.http.get(API_URL + '/mod', { responseType: 'text' });
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+    return this.http.get(API_URL + '/admin', { responseType: 'text' });
   }
 
   getAll(): Observable<UserProps[]> {
     return this.http.get<UserProps[]>(API_URL);
   }
 
-  get(by: any): Observable<UserProps> {
-    return this.http.get<UserProps>(`${API_URL}/${by}`);
+  get(by: any): Observable<any> {
+    return this.http.get(`${API_URL}/${by}`);
   }
 
   create(user: UserProps): Observable<any> {
