@@ -16,6 +16,8 @@ import { BoardAdminComponent } from './components/board-admin/board-admin.compon
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PlateShareComponent } from './components/plate-share/plate-share.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { PlateComponent } from './components/plate/plate.component';
+import { EditPlateComponent } from './components/edit-plate/edit-plate.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     ProfileComponent,
     BoardAdminComponent,
     PlateShareComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    PlateComponent,
+    EditPlateComponent
   ],
   imports: [
     BrowserModule,

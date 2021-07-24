@@ -26,10 +26,9 @@ export class PlateShareComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { name, quantity, comment, photo } = this.form;
-    this.plateService.share(name, quantity, comment, photo).subscribe(
+    const { name, quantity, number, photo, comment} = this.form;
+    this.plateService.share(name, quantity, number, comment, photo).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSharedFailed = false;
       },
@@ -39,8 +38,8 @@ export class PlateShareComponent implements OnInit {
       }
     )
 
-
   }
+
 
   reloadPage(): void {
     window.location.reload();

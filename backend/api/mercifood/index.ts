@@ -2,8 +2,8 @@ import {config} from "dotenv";
 config();
 import express, {Express} from "express";
 import bodyParser from "body-parser";
-
 import {buildRoutes} from "./routes";
+import cors from 'cors';
 //import {buildSeeders} from "./seeders";
 
 
@@ -17,6 +17,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+  
 buildRoutes(app);
 
 const port = process.env.PORT || 3000;

@@ -63,6 +63,16 @@ plateRouter.get("/:by", isAuth, async function(req,res) {
     }
 })
 
+// plateRouter.get("/users/:by", isAuth, async function(req,res) {
+//     const plateController = await PlateController.getInstance();
+//     const plates = await plateController.getByUser(req.params.by);
+//     if(plates !== null) {
+//         res.status(200).json(plates).end();
+//     } else {
+//         res.status(404).send({error: 'field not found'}).end();
+//     }
+// })
+
 plateRouter.delete("/:by", isAuth, async function(req,res) {
     const plateController = await PlateController.getInstance();
     const plate = await plateController.remove(req.params.by);

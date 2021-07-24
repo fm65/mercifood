@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PlateInstance, PlateProps } from '../../../../../backend/api/mercifood/models/plate.model';
 
 const API_URL = 'http://localhost:3000/plates/';
 
@@ -15,12 +16,17 @@ export class PlateService {
 
   constructor(private http: HttpClient) { }
 
-  share(name: string, quantity: number, comment:string, photo?:string): Observable<any> {
+  share(name: string, quantity: number, number:number, comment:string, photo?:string): Observable<any> {
     return this.http.post(API_URL, {
       name,
       quantity,
+      number,
+      photo,
       comment,
-      photo
     }, httpOptions);
+  }
+
+  getAll(): Observable<PlateProps[]> {
+    return this.http.get<PlateProps[]>(API_URL);
   }
 }
