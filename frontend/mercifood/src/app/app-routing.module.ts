@@ -7,7 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
-import { PlateComponent } from './components/plate/plate.component';
+import { PlateShareComponent } from './components/plate-share/plate-share.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
@@ -17,8 +17,9 @@ const routes: Routes = [
   { path: 'user', component: ProfileComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'plate', component: PlateComponent },
+  // { path: 'plate', component: PlateComponent },
   { path: 'editprofile', component: EditProfileComponent },
+  { path: 'plateshare', component: PlateShareComponent },
   //{ path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -95,7 +95,8 @@ public class ProjectTasksController {
     }
 
     @FXML
-    private void handleNewTask() throws IOException, SQLException {
+    private void handleNewTask() throws Exception {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             Task newTask = new Task("New Task");
             newTask.setProject(project);
@@ -107,14 +108,15 @@ public class ProjectTasksController {
                 project.getTasksView().add(newTask);
                 project.newTask(newTask);
             }
-        } catch(IOException e) {
-            System.out.println("Task can't be created");
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
 
     }
 
     @FXML
-    private void handleDeleteTask() throws FileNotFoundException {
+    private void handleDeleteTask() throws Exception {
         PrintWriter printWriter = new PrintWriter("logs.txt");
         try {
             int selectedIndex = tableView_task.getSelectionModel().getSelectedIndex();
@@ -126,8 +128,9 @@ public class ProjectTasksController {
             } else {
                 System.out.println("No tasks");
             }
-        } catch(FileNotFoundException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
 
     }
@@ -148,29 +151,27 @@ public class ProjectTasksController {
 
     @FXML
     public static boolean showTaskEdit(Task task) throws IOException {
+        PrintWriter printWriter = new PrintWriter("logs.txt");
         try {
-            // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ProjectEditController.class.getResource("TaskEdit.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Edit Task");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the person into the controller.
             TaskEditController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setTask(task);
 
-            // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
             return controller.isOkClicked();
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
             return false;
         }
     }

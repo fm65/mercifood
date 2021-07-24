@@ -14,6 +14,7 @@ import models.Task;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class HomeController {
@@ -51,7 +52,7 @@ public class HomeController {
 
 
     @FXML
-    private void initialize() throws ClassNotFoundException, FileNotFoundException {
+    private void initialize() {
         /*
         Set the projects table
          */
@@ -103,6 +104,7 @@ public class HomeController {
 
     @FXML
     private void handleNewProject() throws IOException, SQLException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             Project newProject = new Project("New Project");
 
@@ -113,8 +115,9 @@ public class HomeController {
             if (okClicked) {
                 Database.getProjectsView().add(newProject);
             }
-        } catch(IOException e) {
-            System.out.println("Project can't be created");
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
 
     }
@@ -128,15 +131,13 @@ public class HomeController {
                 this.showProjectDetails(selectedProject);
             }
 
-        } else {
-            System.out.println("Nothing selected");
         }
     }
 
     @FXML
-    private void handleDeleteProject() throws SQLException {
+    private void handleDeleteProject() throws Exception {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
-
             int selectedIndex = tableView_project.getSelectionModel().getSelectedIndex();
             Project project = tableView_project.getSelectionModel().getSelectedItem();
 
@@ -146,14 +147,16 @@ public class HomeController {
             } else {
                 System.out.println("No projects");
             }
-        } catch(FileNotFoundException e) {
-            System.out.println(e);
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
 
     }
 
     @FXML
     public static boolean showProjectEdit(Project project) throws IOException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -175,8 +178,9 @@ public class HomeController {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
             return controller.isOkClicked();
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
             return false;
         }
     }

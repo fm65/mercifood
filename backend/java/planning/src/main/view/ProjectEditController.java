@@ -15,6 +15,7 @@ import models.Task;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -60,39 +61,48 @@ public class ProjectEditController {
 
     @FXML
     private void handleOk() throws SQLException, FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         int projectId = Database.getProjectId(project.getName());
 
-        if(nameField.getText() != null) {
-            project.setName(nameField.getText());
-            String nameRequest = "UPDATE project SET name = '"+nameField.getText()+"' WHERE id_project = "+projectId+";";
-            Database.update(nameRequest);
-        }
+        try {
+            if (nameField.getText() != null) {
+                project.setName(nameField.getText());
+                String nameRequest = "UPDATE project SET name = '" + nameField.getText() + "' WHERE id_project = " + projectId + ";";
+                Database.update(nameRequest);
+            }
 
-        if(deadlineField.getText() != null) {
-            if(LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
-                project.setDeadline(LocalDate.parse(deadlineField.getText()));
-                String deadlineRequest = "UPDATE project SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_project = "+projectId+";";
+            if (deadlineField.getText() != null) {
+                if (LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
+                    project.setDeadline(LocalDate.parse(deadlineField.getText()));
+                    String deadlineRequest = "UPDATE project SET deadline = '" + LocalDate.parse(deadlineField.getText()) + "' WHERE id_project = " + projectId + ";";
+                    Database.update(deadlineRequest);
+                }
+            } else {
+                project.setDeadline(null);
+                String deadlineRequest = "UPDATE project SET deadline = " + null + " WHERE id_project = " + projectId + ";";
                 Database.update(deadlineRequest);
             }
-        } else {
-            project.setDeadline(null);
-            String deadlineRequest = "UPDATE project SET deadline = "+null+" WHERE id_project = "+projectId+";";
-            Database.update(deadlineRequest);
-        }
 
-        if(nextAppointmentField.getText() != null) {
-            if(LocalDate.parse(nextAppointmentField.getText()).isEqual(LocalDate.now()) || LocalDate.parse(nextAppointmentField.getText()).isAfter(LocalDate.now())) {
-                project.setNextAppointment(LocalDate.parse(nextAppointmentField.getText()));
-                String nextAppointmentRequest = "UPDATE project SET nextAppointment = '" + LocalDate.parse(nextAppointmentField.getText()) + "' WHERE id_project = " + projectId + ";";
+            if (nextAppointmentField.getText() != null) {
+                if (LocalDate.parse(nextAppointmentField.getText()).isEqual(LocalDate.now()) || LocalDate.parse(nextAppointmentField.getText()).isAfter(LocalDate.now())) {
+                    project.setNextAppointment(LocalDate.parse(nextAppointmentField.getText()));
+                    String nextAppointmentRequest = "UPDATE project SET nextAppointment = '" + LocalDate.parse(nextAppointmentField.getText()) + "' WHERE id_project = " + projectId + ";";
+                    Database.update(nextAppointmentRequest);
+                }
+            } else {
+                project.setNextAppointment(null);
+                String nextAppointmentRequest = "UPDATE project SET nextAppointment = " + null + " WHERE id_project = " + projectId + ";";
                 Database.update(nextAppointmentRequest);
             }
-        } else {
-            project.setNextAppointment(null);
-            String nextAppointmentRequest = "UPDATE project SET nextAppointment = " +null+ " WHERE id_project = " + projectId + ";";
-            Database.update(nextAppointmentRequest);
+            okClicked = true;
+            dialogStage.close();
+
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
-        okClicked = true;
-        dialogStage.close();
+
+
     }
 
     @FXML
@@ -101,19 +111,19 @@ public class ProjectEditController {
     }
 
     @FXML
-    private void handleEditTask() throws IOException, ClassNotFoundException {
+    private void handleEditTask() throws Exception {
 
         showTasks(this.project);
     }
 
     @FXML
-    private void handleEditMember() throws IOException, ClassNotFoundException {
+    private void handleEditMember() throws Exception {
 
         showMembers(this.project);
     }
 
     @FXML
-    public static void showTasks(Project project) throws IOException, ClassNotFoundException {
+    public static void showTasks(Project project) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ProjectTasksController.class.getResource("ProjectTasks.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
@@ -133,7 +143,7 @@ public class ProjectEditController {
     }
 
     @FXML
-    public static void showMembers(Project project) throws IOException, ClassNotFoundException {
+    public static void showMembers(Project project) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ProjectMembersController.class.getResource("ProjectMembers.fxml"));
         AnchorPane page = (AnchorPane) loader.load();

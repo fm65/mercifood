@@ -36,7 +36,7 @@ public class MemberEditController {
     }
 
     @FXML
-    private void handleOk() throws FileNotFoundException {
+    private void handleOk() throws Exception {
         int memberId = Database.getMemberId(member.getName());
 
         if(nameField.getText() != null) {

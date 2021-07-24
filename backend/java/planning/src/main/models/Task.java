@@ -5,9 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +16,7 @@ public class Task {
     Task attributes
      */
     private String name;
-    private State state; //TOTO //DOING //DONE
+    private State state; //TODO //DOING //DONE
     private Member owner;
     private LocalDate creationDate;
     private LocalDate deadline;
@@ -102,7 +100,7 @@ public class Task {
     /*
     User Interactions
      */
-    public void updateState() throws FileNotFoundException {
+    public void updateState() throws Exception {
 
         System.out.println("What is the new state ?");
         System.out.println(State.getStatesChoices());
@@ -122,7 +120,7 @@ public class Task {
         System.out.println(this.name + " is now " + this.state + ".");
     }
 
-    public void setDeadline() throws FileNotFoundException {
+    public void setDeadline() throws Exception {
 
         System.out.println("Which day ?");
         Scanner scannerDay = new Scanner( System.in );
@@ -197,7 +195,7 @@ public class Task {
         return "1. Update the state\n2. Update the owner\n3. Update the deadline\n4. Write a comment\n5. Remove from project\n6. Nothing\n";
     }
 
-    public Task update() throws FileNotFoundException {
+    public Task update() throws Exception {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
         System.out.println("What do you want to do with this task ?");
@@ -235,19 +233,23 @@ public class Task {
             choice = scannerYear.nextInt();
             } while (choice != 5);
             return this;
-        } catch (FileNotFoundException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return null;
         }
     }
 
     public void assignTo(Member member) {
+        if(this.owner != null) {
+            List<Task> oldOwnerTasks = this.owner.getTasks();
+            oldOwnerTasks.remove(this);
+        }
         this.owner = member;
         if(this.owner != null) {
             this.owner.getTasks().add(this);
         }
     }
-
 
     /*
     Others

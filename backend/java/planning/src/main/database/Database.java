@@ -166,8 +166,9 @@ public class Database {
                 + "constraint foreign key (id_member) references member(id_member))";
 
             statement.execute(sqlCreate);
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -176,10 +177,11 @@ public class Database {
 
         try {
             statement.executeUpdate("REPLACE INTO account (id_user,name,password) VALUES (1,'guest','guest3AL')");
-            statement.executeUpdate("REPLACE INTO account (name,password) VALUES ('fidel','fidelm3AL')");
-            statement.executeUpdate("REPLACE INTO account (name,password) VALUES ('halisia','halisiah3AL')");
-        } catch (SQLException e) {
+            statement.executeUpdate("REPLACE INTO account (id_user, name,password) VALUES (2, 'fidel','fidelm3AL')");
+            statement.executeUpdate("REPLACE INTO account (id_user, name,password) VALUES (3, 'halisia','halisiah3AL')");
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -188,8 +190,9 @@ public class Database {
 
         try {
             statement.executeUpdate("REPLACE INTO home (id_home,name) VALUES (1,'3AL_projects')");
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -213,8 +216,9 @@ public class Database {
             getFromMember();
             getFromTasks();
 
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -232,8 +236,9 @@ public class Database {
                 accounts.add(account);
             }
 
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -259,8 +264,9 @@ public class Database {
                 home.addProject(project);
                 projectsView.add(project);
             }
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -282,8 +288,9 @@ public class Database {
                     project.getMembersView().add(member);
                 }
             }
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -315,8 +322,9 @@ public class Database {
                     project.getTasksView().add(task);
                 }
             }
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -334,8 +342,9 @@ public class Database {
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -355,8 +364,9 @@ public class Database {
                 id = resultat.getInt("id_project");
             }
             return id;
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return 0;
         }
     }
@@ -371,8 +381,9 @@ public class Database {
                 id = resultat.getInt("id_member");
             }
             return id;
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return 0;
         }
     }
@@ -387,8 +398,9 @@ public class Database {
                 id = resultat.getInt("id_task");
             }
             return id;
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return 0;
         }
     }
@@ -397,8 +409,9 @@ public class Database {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             statement.executeUpdate(sql);
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
@@ -406,8 +419,9 @@ public class Database {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             statement.executeUpdate(sql);
-        } catch (SQLException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 

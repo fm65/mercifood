@@ -1,4 +1,5 @@
 import database.Database;
+import models.Member;
 
 import java.io.PrintWriter;
 import java.sql.*;
@@ -11,7 +12,6 @@ public class App {
 
         PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
-
         /*
         Data recovering and application starting
         */

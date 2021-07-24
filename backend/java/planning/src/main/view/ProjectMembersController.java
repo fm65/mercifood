@@ -80,7 +80,8 @@ public class ProjectMembersController {
     }
 
     @FXML
-    private void handleNewMember() throws IOException, SQLException {
+    private void handleNewMember() throws Exception {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
             Member newMember = new Member("New Member");
             newMember.setProject(project);
@@ -92,8 +93,9 @@ public class ProjectMembersController {
                 project.getMembersView().add(newMember);
                 project.newMember(newMember);
             }
-        } catch(IOException e) {
-            System.out.println("Member can't be created");
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
 
     }
@@ -114,20 +116,20 @@ public class ProjectMembersController {
             } else {
                 System.out.println("No members");
             }
-        } catch (FileNotFoundException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
     }
 
     @FXML
     public static boolean showMemberEdit(Member member) throws IOException {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
-            // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ProjectEditController.class.getResource("MemberEdit.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("New Member");
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -142,8 +144,9 @@ public class ProjectMembersController {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
             return controller.isOkClicked();
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
             return false;
         }
     }

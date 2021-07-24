@@ -128,9 +128,7 @@ public class Home {
                     break;
                 case 2:
                     if(this.projects.size() > 0) {
-
                             updateExistingProject();
-
                     } else {
                         System.out.println("There are no projects yet.");
                     }
@@ -138,8 +136,9 @@ public class Home {
                 case 3:
                     return this;
             }
-        } catch (IOException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
         return this;
     }
@@ -172,8 +171,9 @@ public class Home {
             } else {
                 return null;
             }
-        } catch (IOException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
         return null;
     }

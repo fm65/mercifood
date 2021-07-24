@@ -59,7 +59,7 @@ public class TaskEditController {
         this.dialogStage = dialogStage;
     }
 
-    public void setTask(Task task) throws FileNotFoundException {
+    public void setTask(Task task) throws Exception {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
         this.task = task;
@@ -94,8 +94,9 @@ public class TaskEditController {
                     try {
                         String stateRequest = "UPDATE task SET state = '"+task.getState().toString()+"' WHERE id_task = "+ Database.getTaskId(task.getName())+";";
                         Database.update(stateRequest);
-                    } catch (FileNotFoundException e) {
+                    } catch (Error | Exception e) {
                         printWriter.println(e);
+                        printWriter.close();
                     }
 
                 }
@@ -108,61 +109,69 @@ public class TaskEditController {
     }
 
     @FXML
-    private void handleOk() throws SQLException, FileNotFoundException {
-        int taskId = Database.getTaskId(task.getName());
-        boolean memberExists = false;
-        if(nameField.getText() != null) {
-            task.setName(nameField.getText());
-            String nameRequest = "UPDATE task SET name = '"+nameField.getText()+"' WHERE id_task = "+taskId+";";
-            Database.update(nameRequest);
-        }
+    private void handleOk() throws Exception {
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        try {
+            int taskId = Database.getTaskId(task.getName());
+            boolean memberExists = false;
+            if(nameField.getText() != null) {
+                task.setName(nameField.getText());
+                String nameRequest = "UPDATE task SET name = '"+nameField.getText()+"' WHERE id_task = "+taskId+";";
+                Database.update(nameRequest);
+            }
 
-        if(ownerField.getText() != null) {
-            Member member;
-            for(Member existingMember:this.task.getProject().getMembers()) {
-                if(existingMember.getName().equalsIgnoreCase(ownerField.getText())) {
-                    member = existingMember;
-                    task.assignTo(member);
-                    task.setProject(this.task.getProject());
-                    memberExists = true;
+            if(ownerField.getText() != null) {
+                Member member;
+                for(Member existingMember:this.task.getProject().getMembers()) {
+                    if(existingMember.getName().equalsIgnoreCase(ownerField.getText())) {
+                        member = existingMember;
+                        task.assignTo(member);
+                        task.setProject(this.task.getProject());
+                        memberExists = true;
+                    }
                 }
+                if(ownerField.getText().equals("")) {
+                    task.assignTo(null);
+                    String memberRequest = "UPDATE task SET id_member = "+null+" WHERE id_task = "+taskId+";";
+                    Database.update(memberRequest);
+                }
+
+                if(task.getOwner() != null) {
+                    int memberId = Database.getMemberId(task.getOwner().getName());
+                    String memberRequest = "UPDATE task SET id_member = '"+memberId+"' WHERE id_task = "+taskId+";";
+                    Database.update(memberRequest);
+                }
+                errorField.setText(memberExists ? "": "Member not exists");
             }
 
-            errorField.setText(memberExists ? "Member not exists" : "");
-            if(task.getOwner() != null) {
-                int memberId = Database.getMemberId(task.getOwner().getName());
-                String memberRequest = "UPDATE task SET id_member = '"+memberId+"' WHERE id_task = "+taskId+";";
-                Database.update(memberRequest);
+            if(todoButton.isSelected()) {
+                task.setState(State.TODO);
+                String stateRequest = "UPDATE task SET state = '"+task.getState().toString()+"' WHERE id_task = "+taskId+";";
+                Database.update(stateRequest);
             }
-        } else if(ownerField.equals("")){
-            task.assignTo(null);
-            String memberRequest = "UPDATE task SET id_member = "+null+" WHERE id_task = "+taskId+";";
-            Database.update(memberRequest);
-        }
 
-        if(todoButton.isSelected()) {
-            task.setState(State.TODO);
-            String stateRequest = "UPDATE task SET state = '"+task.getState().toString()+"' WHERE id_task = "+taskId+";";
-            Database.update(stateRequest);
-        }
+            if(commentField.getText() != null) {
+                task.setComment(commentField.getText());
+                String commentRequest = "UPDATE task SET comment = '"+commentField.getText()+"' WHERE id_task = "+taskId+";";
+                Database.update(commentRequest);
+            }
 
-        if(commentField.getText() != null) {
-            task.setComment(commentField.getText());
-            String commentRequest = "UPDATE task SET comment = '"+commentField.getText()+"' WHERE id_task = "+taskId+";";
-            Database.update(commentRequest);
-        }
-
-        if(deadlineField.getText() != null ) {
-            if(LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
-                task.setDeadline(LocalDate.parse(deadlineField.getText()));
-                String deadlineRequest = "UPDATE task SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_task = "+taskId+";";
+            if(deadlineField.getText() != null ) {
+                if(LocalDate.parse(deadlineField.getText()).isAfter(LocalDate.now()) || LocalDate.parse(deadlineField.getText()).isEqual(LocalDate.now())) {
+                    task.setDeadline(LocalDate.parse(deadlineField.getText()));
+                    String deadlineRequest = "UPDATE task SET deadline = '"+LocalDate.parse(deadlineField.getText())+"' WHERE id_task = "+taskId+";";
+                    Database.update(deadlineRequest);
+                }
+            } else {
+                task.setDeadline(null);
+                String deadlineRequest = "UPDATE task SET deadline = "+null+" WHERE id_task = "+taskId+";";
                 Database.update(deadlineRequest);
             }
-        } else {
-            task.setDeadline(null);
-            String deadlineRequest = "UPDATE task SET deadline = "+null+" WHERE id_task = "+taskId+";";
-            Database.update(deadlineRequest);
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
         }
+
 
         okClicked = true;
         dialogStage.close();

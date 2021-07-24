@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlateComponent } from './plate.component';
+import { PlateShareComponent } from './plate-share.component';
 
 describe('PlateComponent', () => {
-  let component: PlateComponent;
-  let fixture: ComponentFixture<PlateComponent>;
+  let component: PlateShareComponent;
+  let fixture: ComponentFixture<PlateShareComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlateComponent ]
+      declarations: [ PlateShareComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlateComponent);
+    fixture = TestBed.createComponent(PlateShareComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

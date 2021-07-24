@@ -96,9 +96,9 @@ public class Project {
     }
 
     /*
-            User interactions
-             */
-    public void setName() throws FileNotFoundException {
+    User interactions
+     */
+    public void setName() throws Exception {
 
         int projectId = Database.getProjectId(this.getName());
         System.out.println("Project name :");
@@ -110,7 +110,7 @@ public class Project {
         Database.insertInto(sql);
     }
 
-    public static Project newProject() throws FileNotFoundException {
+    public static Project newProject() throws Exception {
 
         System.out.println("Project name :");
         Scanner scanner = new Scanner( System.in );
@@ -122,7 +122,7 @@ public class Project {
         return newProject.update();
     }
 
-    public void setNextAppointment() throws FileNotFoundException {
+    public void setNextAppointment() throws Exception {
 
         System.out.println("Which day ?");
         Scanner scannerDay = new Scanner( System.in );
@@ -174,7 +174,7 @@ public class Project {
         return choices;
     }
 
-    public void setDeadline() throws FileNotFoundException {
+    public void setDeadline() throws Exception {
 
         System.out.println("Which day ?");
         Scanner scannerDay = new Scanner( System.in );
@@ -203,7 +203,7 @@ public class Project {
         Database.update(sql);
     }
 
-    public void newMember() throws FileNotFoundException {
+    public void newMember() throws Exception {
 
         System.out.println("Member name :");
         Scanner scanner = new Scanner( System.in );
@@ -220,7 +220,7 @@ public class Project {
 
     }
 
-    public void removeMember() throws FileNotFoundException {
+    public void removeMember() throws Exception {
 
         System.out.println("Wich member ?");
         System.out.println(this.getMemberChoices());
@@ -255,7 +255,7 @@ public class Project {
 
     }
 
-    public void removeMember(Member member) throws FileNotFoundException {
+    public void removeMember(Member member) throws Exception {
 
         String sqlTasks = "UPDATE task SET id_member = "+null+" WHERE id_member = "+ Database.getMemberId(member.getName())+";";
         Database.update(sqlTasks);
@@ -266,7 +266,7 @@ public class Project {
         this.members.remove(member);
     }
 
-    public Task newTask() throws FileNotFoundException {
+    public Task newTask() throws Exception {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
         System.out.println("Task name :");
@@ -283,13 +283,14 @@ public class Project {
             Database.insertInto(sql);
 
             return newTask.update();
-        } catch (IOException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return null;
         }
     }
 
-    public Task updateExistingTask() throws FileNotFoundException {
+    public Task updateExistingTask() throws Exception {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
 
         System.out.println("Which task (0 to cancel) ? ");
@@ -305,8 +306,9 @@ public class Project {
                 this.tasks.get(choice - 1).update();
                 return null;
             }
-        } catch (IOException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
         }
         return null;
     }
@@ -316,7 +318,7 @@ public class Project {
         String sql = "DELETE FROM task WHERE id_task = "+ Database.getTaskId(task.getName())+";";
         Database.update(sql);
 
-        this.tasks.remove(this.tasks.indexOf(task));
+        this.tasks.remove(task);
     }
 
     public String getProjectChoices() {
@@ -377,8 +379,9 @@ public class Project {
                 choice = scanner.nextInt();
             } while (choice != 7);
             return this;
-        } catch (FileNotFoundException e) {
+        } catch (Error | Exception e) {
             printWriter.println(e);
+            printWriter.close();
             return null;
         }
     }

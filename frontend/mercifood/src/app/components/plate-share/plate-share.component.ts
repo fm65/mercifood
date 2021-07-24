@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PlateService } from 'src/app/services/plate.service';
 
 @Component({
-  selector: 'app-plate',
-  templateUrl: './plate.component.html',
-  styleUrls: ['./plate.component.scss']
+  selector: 'app-plate-share',
+  templateUrl: './plate-share.component.html',
+  styleUrls: ['./plate-share.component.scss']
 })
-export class PlateComponent implements OnInit {
+export class PlateShareComponent implements OnInit {
 
   form: any = {
     name: null,
