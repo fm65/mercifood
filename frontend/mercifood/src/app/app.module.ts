@@ -18,6 +18,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { EditPlateComponent } from './components/edit-plate/edit-plate.component';
 import { PlateListComponent } from './components/plate-list/plate-list.component';
 import { AddPlateComponent } from './components/add-plate/add-plate.component';
+import { PlateDetailsComponent } from './components/plate-details/plate-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AddPlateComponent } from './components/add-plate/add-plate.component';
     EditProfileComponent,
     EditPlateComponent,
     PlateListComponent,
-    AddPlateComponent
+    AddPlateComponent,
+    PlateDetailsComponent
   ],
   imports: [
     BrowserModule,

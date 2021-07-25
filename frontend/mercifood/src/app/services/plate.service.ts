@@ -28,8 +28,8 @@ export class PlateService {
     return this.http.get(`${API_URL}/${by}`);
   }
 
-  update(plate: PlateProps): Observable<any> {
-    return this.http.put(`${API_URL}/${plate.id}`, plate);
+  update(id: any, plate: PlateProps): Observable<any> {
+    return this.http.put(`${API_URL}/${id}`, plate);
   }
 
   deleteAll(): Observable<any> {

@@ -54,15 +54,15 @@
           <label><strong>Comment:</strong></label> {{ currentPlate.comment }}
         </div>
         <div>
-          <label><strong>Status:</strong></label>
-          {{ currentPlate.reserved ? "Published" : "Pending" }}
+          <label><strong>Statut:</strong></label>
+          {{ currentPlate.reserved ? "Publié" : "En attente" }}
         </div>
         <div>
             <label><strong>Created:</strong></label> {{ currentPlate.createdAt }}
         </div>
   
-        <a class="badge badge-warning" [routerLink]="'/plates/{{ currentPlate.id }}'" style="color: black;">
-          Edit
+        <a class="badge badge-warning" [routerLink]="['/plates', currentPlate.id ]" style="color: black;">
+          Éditer
         </a>
       </div>
   

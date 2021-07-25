@@ -1,0 +1,104 @@
+<div>
+    <div *ngIf="currentPlate.id" class="edit-form" style="margin-top: 7px;">
+      <h4>Détails du plat</h4>
+      <form>
+        <div class="form-group">
+            <label for="name">Nom du plat</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="currentPlate.name"
+              name="name"
+            />
+          </div>
+  
+          <div class="form-group">
+              <label for="quantity">Quantité (en grammes)</label>
+              <input
+                type="text"
+                class="form-control"
+                id="quantity"
+                required
+                [(ngModel)]="currentPlate.quantity"
+                name="quantity"
+              />
+          </div>
+  
+          <div class="form-group">
+              <label for="number">Nombre de personnes</label>
+              <input
+                type="text"
+                class="form-control"
+                id="number"
+                required
+                [(ngModel)]="currentPlate.number"
+                name="number"
+              />
+          </div>
+  
+          <div class="form-group">
+              <label for="comment">Commentaires</label>
+              <input
+                type="text"
+                class="form-control"
+                id="comment"
+                required
+                [(ngModel)]="currentPlate.comment"
+                name="comment"
+              />
+          </div>
+  
+          <div class="form-group">
+              <label for="photo">Photo</label>
+              <input
+                type="file"
+                class="form-control"
+                id="photo"
+                required
+                [(ngModel)]="currentPlate.photo"
+                name="photo"
+              />
+          </div>
+  
+        <div class="form-group">
+          <label><strong>Statut:</strong></label>
+          {{ published ? "Publié" : "En attente" }}
+        </div>
+      </form>
+  
+      <button
+        class="badge badge-primary mr-2"
+        *ngIf="published"
+        (click)="updatePublished(false)"
+      >
+        Non publié
+      </button>
+      <button
+        *ngIf="!published"
+        class="badge badge-primary mr-2"
+        (click)="updatePublished(true)"
+      >
+      Publier
+      </button>
+  
+      <button class="badge badge-danger mr-2" (click)="deletePlate()">
+        Supprimer
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updatePlate()"
+      >
+      Mettre à jour
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentPlate.id">
+      <br />
+      <p>Impossible d'accéder à cette plaque...</p>
+    </div>
+  </div>
