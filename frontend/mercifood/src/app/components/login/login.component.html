@@ -56,7 +56,9 @@
       </div>
       <div class="pass-link"><a href="#">Forgot password ?</a></div>
     </div>
-    <div class="field"><input type="submit" value="LOGIN"></div>
+    <div class="field">
+      <input type="submit" value="LOGIN">
+    </div>
     <div
       class="alert alert-danger"
       role="alert"
@@ -70,6 +72,6 @@
   </form>
 
   <div class="alert alert-success" *ngIf="isLoggedIn">
-    Logged in as {{ role }}.
+    Logged in as {{ username }}.
   </div>
 </div>

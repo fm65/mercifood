@@ -15,20 +15,28 @@ const httpOptions = {
 export class PlateService {
 
   constructor(private http: HttpClient) { }
-  share(name: string, quantity: number,
-        number:number, comment:string,
-        photo?:string): Observable<any> {
-    return this.http.post(API_URL, {
-      name,
-      quantity,
-      number,
-      photo,
-      comment,
-    }, httpOptions);
+
+  create(data: any): Observable<any> {
+    return this.http.post(API_URL, data, httpOptions);
   }
 
-
-  /*getAll(): Observable<PlateProps[]> {
+  getAll(): Observable<PlateProps[]> {
     return this.http.get<PlateProps[]>(API_URL);
-  }*/
+  }
+
+  getBy(by: any):Observable<any> {
+    return this.http.get(`${API_URL}/${by}`);
+  }
+
+  update(plate: PlateProps): Observable<any> {
+    return this.http.put(`${API_URL}/${plate.id}`, plate);
+  }
+
+  deleteAll(): Observable<any> {
+    return this.http.delete(API_URL);
+  }
+
+  delete(by: any): Observable<any> {
+    return this.http.delete(`${API_URL}/${by}`);
+  }
 }

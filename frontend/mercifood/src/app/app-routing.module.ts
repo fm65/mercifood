@@ -7,9 +7,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
-import { PlateShareComponent } from './components/plate-share/plate-share.component';
+import { AddPlateComponent } from './components/add-plate/add-plate.component';
+import { PlateListComponent } from './components/plate-list/plate-list.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { PlateComponent } from './components/plate/plate.component';
 import { EditPlateComponent } from './components/edit-plate/edit-plate.component';
 
 const routes: Routes = [
@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'recipe', component: RecipeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'editprofile', component: EditProfileComponent },
-  { path: 'plates', component: PlateComponent },
-  { path: 'plateshare', component: PlateShareComponent },
+  { path: 'add-plate', component: AddPlateComponent },
+  { path: 'plates', component: PlateListComponent },
   { path: 'editplate', component: EditPlateComponent },
   //{ path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }

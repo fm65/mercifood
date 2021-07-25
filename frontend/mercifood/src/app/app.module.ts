@@ -14,10 +14,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { PlateShareComponent } from './components/plate-share/plate-share.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { PlateComponent } from './components/plate/plate.component';
 import { EditPlateComponent } from './components/edit-plate/edit-plate.component';
+import { PlateListComponent } from './components/plate-list/plate-list.component';
+import { AddPlateComponent } from './components/add-plate/add-plate.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,10 @@ import { EditPlateComponent } from './components/edit-plate/edit-plate.component
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
-    PlateShareComponent,
     EditProfileComponent,
-    PlateComponent,
-    EditPlateComponent
+    EditPlateComponent,
+    PlateListComponent,
+    AddPlateComponent
   ],
   imports: [
     BrowserModule,

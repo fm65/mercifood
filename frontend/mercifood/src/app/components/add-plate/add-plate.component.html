@@ -1,0 +1,73 @@
+<div style="margin-top: 7px;">
+    <h4>Partager un plat</h4>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="name">Nom du plat</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="plate.name"
+            name="name"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantité (en grammes)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="quantity"
+              required
+              [(ngModel)]="plate.quantity"
+              name="quantity"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="number">Nombre de personnes</label>
+            <input
+              type="text"
+              class="form-control"
+              id="number"
+              required
+              [(ngModel)]="plate.number"
+              name="number"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Commentaires</label>
+            <input
+              type="text"
+              class="form-control"
+              id="comment"
+              required
+              [(ngModel)]="plate.comment"
+              name="comment"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Photo</label>
+            <input
+              type="file"
+              class="form-control"
+              id="photo"
+              required
+              [(ngModel)]="plate.photo"
+              name="photo"
+            />
+        </div>
+  
+        <button (click)="savePlate()" class="btn btn-success">Partager</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Le plat a bien été partagé!</h4>
+        <button class="btn btn-success" (click)="newPlate()">Ajouter un nouveau plat</button>
+      </div>
+    </div>
+  </div>

@@ -1,41 +1,60 @@
 <div id="app">
-    <nav class="navbar">
-      <div class="navbar-logo" [routerLink]="'/home'">
-        <img class="logo" src="assets/img/logo.svg" alt="logo">
-        <a class="navbar-brand"><h3>Mercifood</h3></a>
+<div class="navbar">
+  <nav class="navbar">
+    <div class="navbar-logo" [routerLink]="'/home'">
+      <img class="logo" src="assets/img/logo.svg" alt="logo">
+      <a class="navbar-brand"><h3>Mercifood</h3></a>
+    </div>
+    <div class="search-box" *ngIf="isLoggedIn">
+      <div class="search">
+        <input type="text" class="search-input" placeholder="Search...">
+        <button type="submit" class="search-button">
+          <i class="fa fa-search"></i>
+        </button>
       </div>
-      <div class="search-box" *ngIf="isLoggedIn">
-        <div class="search">
-          <input type="text" class="search-input" placeholder="Search...">
-          <button type="submit" class="search-button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
-      </div>
+    </div>
 
-      <ul *ngIf="isLoggedIn">
-        <li class="nav-item">
-          <a class="nav-link left" [routerLink]="'/profile'">{{ username }}</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn left" (click)="logout()"><button>Se déconnecter</button></a>
-        </li>
-      </ul>
-      <ul *ngIf="!isLoggedIn">
-        <li class="nav-item">
-          <a class="btn left" [routerLink]="'/login'"><button>Se connecter</button></a>
-        </li>
-      </ul>  
-    </nav>
-    
-    <div class="container">
-      <div *ngIf="isLoggedIn">
-        <a class="toto" [routerLink]="'/plateshare'"><h4>Partager un plat</h4></a>
-      </div>
-        <router-outlet></router-outlet>
-    </div>
-    
-    <div class="footer">
-      <p>Mercifood est une application web qui permet de partager de la nourriture autour de soi. </p>
-    </div>
+    <ul *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a class="nav-link left" [routerLink]="'/profile'">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn left" (click)="logout()"><button>Se déconnecter</button></a>
+      </li>
+    </ul>
+    <ul *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a class="btn left" [routerLink]="'/login'"><button>Se connecter</button></a>
+      </li>
+    </ul>  
+  </nav>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu" *ngIf="isLoggedIn">
+    <a [routerLink]="'/add-plate'">Partager un plat</a>
+    <a [routerLink]="'/plates'">Plats à reserver</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
   </div>
+  <div class="noconmenu" *ngIf="!isLoggedIn">
+    <a href="#"></a>
+  </div>
+
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="right">
+    <h2>About</h2>
+    <p>Mercifood est une application web qui 
+      permet de partager de la nourriture autour de soi.
+      <br>
+      créée en 2021 par des etudiants de l'ecole ESGI 
+      (Ecole Supérieure de Génie Informatique)
+    </p>
+  </div>
+</div>
+
+<div class="footer">© copyright mercifood.com</div>
+</div>
