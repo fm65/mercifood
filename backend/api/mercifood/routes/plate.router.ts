@@ -35,6 +35,7 @@ plateRouter.post("/", isAuth,
         },
         req, res
         );
+        
     if(plate !== null) {
         res.status(201).json(plate).end();
     } else {

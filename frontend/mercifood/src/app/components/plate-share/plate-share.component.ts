@@ -28,7 +28,6 @@ export class PlateShareComponent implements OnInit {
 
   onSubmit(): void {
     const { name, quantity, number, photo, comment} = this.form;
-    //console.log(this.form)
     this.plateService.share(name, quantity, number, comment, photo).subscribe(
       data => {
         this.isSuccessful = true;
