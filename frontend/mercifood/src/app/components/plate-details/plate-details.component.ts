@@ -44,7 +44,6 @@ export class PlateDetailsComponent implements OnInit {
   }
 
   updatePublished(status: boolean): void {
-    console.log("######## published: ", status);
     const data = {
       name: this.currentPlate.name,
       photo: this.currentPlate.photo,
