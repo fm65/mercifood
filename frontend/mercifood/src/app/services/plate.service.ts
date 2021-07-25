@@ -6,23 +6,15 @@ import { PlateProps } from '../../../../../backend/api/mercifood/models/plate.mo
 const API_URL = 'http://localhost:3000/plates';
 
 const httpOptions = {
-  // headers: new HttpHeaders({
-  //   'Access-Control-Allow-Origin': '*',
-  //   'Access-Control-Allow-Headers': 'Content-Type',
-  //   'Content-Type': 'application/json',
-  //   "Authorization": "Bearer " + "kjl" ,
-  // })
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
-console.log(httpOptions["authorization"])
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlateService {
 
   constructor(private http: HttpClient) { }
-
   share(name: string, quantity: number,
         number:number, comment:string,
         photo?:string): Observable<any> {
