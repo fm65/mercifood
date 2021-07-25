@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="planning:jar" />
+      <artifact name="planning_interface:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
