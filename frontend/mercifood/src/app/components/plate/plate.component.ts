@@ -15,7 +15,7 @@ export class PlateComponent implements OnInit {
   constructor(private plateService: PlateService) { }
 
   ngOnInit(): void {
-    this.plateService.getAll().subscribe(data => console.log(JSON.stringify(data)));
+    //this.plateService.getAll().subscribe(data => console.log(JSON.stringify(data)));
     // console.log(JSON.stringify(this.plates))
   }
 }

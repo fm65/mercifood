@@ -3,7 +3,6 @@ config();
 import express, {Express} from "express";
 import bodyParser from "body-parser";
 import {buildRoutes} from "./routes";
-import cors from 'cors';
 //import {buildSeeders} from "./seeders";
 
 

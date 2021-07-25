@@ -27,7 +27,6 @@ export class RecipeComponent implements OnInit {
     const { name, ingredient, note} = this.form;
     this.recipeService.add(name, ingredient, note).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isAddedFailed = false;
       },

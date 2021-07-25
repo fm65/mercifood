@@ -29,6 +29,9 @@
     </nav>
     
     <div class="container">
+      <div *ngIf="isLoggedIn">
+        <a class="toto" [routerLink]="'/plateshare'"><h4>Partager un plat</h4></a>
+      </div>
         <router-outlet></router-outlet>
     </div>
     

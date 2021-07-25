@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserProps } from '../../../../../backend/api/mercifood/models/user.model';
 
-const API_URL = 'http://localhost:3000/user';
+const API_URL = 'http://localhost:3000/users';
 
 @Injectable({
   providedIn: 'root'
