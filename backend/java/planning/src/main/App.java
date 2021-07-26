@@ -1,5 +1,4 @@
 import database.Database;
-import models.Member;
 
 import java.io.PrintWriter;
 import java.sql.*;

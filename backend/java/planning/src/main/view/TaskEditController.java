@@ -112,6 +112,8 @@ public class TaskEditController {
     private void handleOk() throws Exception {
         PrintWriter printWriter = new PrintWriter ("logs.txt");
         try {
+            Member oldOwner = task.getOwner();
+
             int taskId = Database.getTaskId(task.getName());
             boolean memberExists = false;
             if(nameField.getText() != null) {
@@ -134,6 +136,7 @@ public class TaskEditController {
                     task.assignTo(null);
                     String memberRequest = "UPDATE task SET id_member = "+null+" WHERE id_task = "+taskId+";";
                     Database.update(memberRequest);
+                    oldOwner.getTasks().clear();
                 }
 
                 if(task.getOwner() != null) {

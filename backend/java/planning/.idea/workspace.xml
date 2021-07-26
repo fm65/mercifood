@@ -30,7 +30,7 @@
   </component>
   <component name="ProjectId" id="1sMCn1WjW6RfPbUG6U0sBAgcXGH" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="C:/Programmes/SceneBuilder/SceneBuilder.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -44,13 +44,15 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\mercifood_plugin" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning" />
+      <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
     </key>
   </component>
   <component name="RunDashboard">

@@ -15,7 +15,6 @@ public class AppInterface extends Application {
     public void start(Stage primaryStage) throws Exception{
         PrintWriter printWriter = new PrintWriter (new FileOutputStream(new File("logs.txt"), true));
         try {
-            printWriter.println("coucou");
             Database.setup();
             Parent root = FXMLLoader.load(getClass().getResource("view/Connexion.fxml"));
             primaryStage.setTitle("Connexion");

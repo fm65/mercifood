@@ -241,12 +241,9 @@ public class Task {
     }
 
     public void assignTo(Member member) {
-        if(this.owner != null) {
-            List<Task> oldOwnerTasks = this.owner.getTasks();
-            oldOwnerTasks.remove(this);
-        }
+        Member oldOwner = this.owner;
         this.owner = member;
-        if(this.owner != null) {
+        if(member != null) {
             this.owner.getTasks().add(this);
         }
     }

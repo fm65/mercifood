@@ -220,7 +220,7 @@ public class Project {
 
     }
 
-    public void removeMember() throws Exception {
+    public Project removeMember() throws Exception {
 
         System.out.println("Wich member ?");
         System.out.println(this.getMemberChoices());
@@ -232,27 +232,30 @@ public class Project {
             System.out.println("Please retry..");
             choice = scanner.nextInt();
         }
-        if(memberList.size() > 0) {
-            if(memberList.get(choice - 1).getTasks().size() > 0) {
-                for(Task task:memberList.get(choice - 1).getTasks()) {
-                    task.assignTo(null);
-                }
-            }
-            System.out.println(memberList.get(choice-1));
-            if(choice != memberList.size() + 1) {
 
+        if(memberList.size() > 0) {
+
+            if(choice != memberList.size() + 1) {
+                Member oldOwner = memberList.get(choice - 1);
+
+                if(memberList.get(choice - 1).getTasks().size() > 0) {
+                    for(Task task:memberList.get(choice - 1).getTasks()) {
+                        task.assignTo(null);
+                    }
+                    oldOwner.getTasks().clear();
+                }
                 String sqlTasks = "UPDATE task SET id_member = "+null+" WHERE id_member = "+ Database.getMemberId(memberList.get(choice - 1).getName())+";";
-                System.out.println(sqlTasks);
+
                 Database.update(sqlTasks);
                 String sqlMember = "DELETE FROM member WHERE id_member = "+ Database.getMemberId(memberList.get(choice - 1).getName())+";";
-                System.out.println(sqlMember);
 
-                    Database.update(sqlMember);
-
+                Database.update(sqlMember);
                 this.members.remove(memberList.get(choice-1));
             }
         }
 
+
+    return this.update();
     }
 
     public void removeMember(Member member) throws Exception {
@@ -348,7 +351,7 @@ public class Project {
                         break;
                     case 3:
                         removeMember();
-                        break;
+                        return this;
                     case 4:
                         newTask();
                         break;

@@ -84,6 +84,9 @@ public class Home {
             System.out.println("Password: ");
             password = scanner.next();
 
+            System.out.println("**********\n\n");
+
+
             /*
             Launch App only if account exists
              */
