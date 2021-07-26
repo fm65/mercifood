@@ -37,6 +37,7 @@ export class PlateService {
   }
 
   delete(by: any): Observable<any> {
+    console.log(`${API_URL}/${by}`);
     return this.http.delete(`${API_URL}/${by}`);
   }
 }

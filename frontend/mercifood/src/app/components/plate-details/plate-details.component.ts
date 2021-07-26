@@ -36,7 +36,6 @@ export class PlateDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.currentPlate = data;
-          console.log(data);
         },
         error => {
           console.log(error);

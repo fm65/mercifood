@@ -33,7 +33,7 @@ export class UserService {
     return this.http.get<UserProps[]>(API_URL);
   }
 
-  get(by: any): Observable<any> {
+  getBy(by: any): Observable<any> {
     return this.http.get(`${API_URL}/${by}`);
   }
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PlateService } from 'src/app/services/plate.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { PlateProps } from '../../../../../../backend/api/mercifood/models/plate.model';
 
+const ADMIN = 1;
 
 @Component({
   selector: 'app-plate-list',
@@ -14,12 +16,20 @@ export class PlateListComponent implements OnInit {
   currentPlate: any = {};
   currentIndex = -1;
   name = '';
+  isAdmin = false;
+  currentUser: any;
+  isPlateFromCurrentUser = false;
+  message = '';
 
-
-  constructor(private plateService: PlateService) { }
+  constructor(private plateService: PlateService,
+              private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.retrievePlates();
+    this.currentUser = this.token.getUser();
+    if (this.currentUser == ADMIN){
+      this.isAdmin = true;
+    }
   }
 
   retrievePlates(): void {
@@ -27,7 +37,6 @@ export class PlateListComponent implements OnInit {
       .subscribe(
         data => {
           this.plates = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -43,6 +52,25 @@ export class PlateListComponent implements OnInit {
   setActivePlate(plate: PlateProps, index: number): void {
     this.currentPlate = plate;
     this.currentIndex = index;
+    this.message = '';
+    this.isPlateFromCurrentUser = false;
+    if (this.currentPlate.User.id == this.currentUser.id) {
+      this.isPlateFromCurrentUser = true;
+    }
+    console.log(this.currentPlate)
+  }
+
+  removePlate(by: any): void {
+    this.plateService.delete(by)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = 'Le plat a été supprimé avec succès!';
+          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   removeAllPlates(): void {
@@ -72,4 +100,19 @@ export class PlateListComponent implements OnInit {
         });
   }
 
+  reservePlate(): void {
+    this.message = '';
+    this.currentPlate['reserved'] = true;
+
+    this.plateService.update(this.currentPlate.id, this.currentPlate)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = response.message ? response.message : 'Ce plat a été réservé avec succès!';
+          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

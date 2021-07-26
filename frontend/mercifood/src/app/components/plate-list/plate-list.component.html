@@ -31,9 +31,16 @@
         </li>
       </ul>
   
-      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPlates()">
-        Remove All
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPlates()" *ngIf="isAdmin">
+        Supprimer tout
       </button>
+      <button class="m-3 btn btn-sm btn-danger" (click)="removePlate(currentPlate.id)" *ngIf="isPlateFromCurrentUser">
+        Supprimer
+      </button>
+      <button class="m-3 btn btn-sm btn-danger" (click)="reservePlate(currentPlate.id)" *ngIf="!currentPlate.reserved && !isPlateFromCurrentUser && currentPlate.id">
+        Réserver
+      </button>
+      <p> {{ message }} </p>
     </div>
     <div class="col-md-6">
       <div *ngIf="currentPlate.id">
@@ -55,13 +62,13 @@
         </div>
         <div>
           <label><strong>Statut:</strong></label>
-          {{ currentPlate.reserved ? "Publié" : "En attente" }}
+          {{ currentPlate.reserved ? "Réservé" : "Disponible" }}
         </div>
         <div>
             <label><strong>Created:</strong></label> {{ currentPlate.createdAt }}
         </div>
   
-        <a class="badge badge-warning" [routerLink]="['/plates', currentPlate.id ]" style="color: black;">
+        <a class="badge badge-warning" [routerLink]="['/plates', currentPlate.id ]" *ngIf="isPlateFromCurrentUser" style="color: black;">
           Éditer
         </a>
       </div>

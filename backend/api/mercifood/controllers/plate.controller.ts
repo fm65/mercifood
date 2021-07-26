@@ -33,7 +33,7 @@ export class PlateController {
 
         const plates = await this.Plate.findAll({
             attributes: ['id', 'name', 'photo', 'quantity', 'number', 'comment', 'reserved', 'createdAt'],
-            include: { model: this.User, attributes: ['username', 'firstname', 'lastname'] },
+            include: { model: this.User, attributes: ['id', 'username', 'firstname', 'lastname'] },
         });
         return plates;
     }
