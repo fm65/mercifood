@@ -68,8 +68,11 @@
             <label><strong>Created:</strong></label> {{ currentPlate.createdAt }}
         </div>
   
-        <a class="badge badge-warning" [routerLink]="['/plates', currentPlate.id ]" *ngIf="isPlateFromCurrentUser" style="color: black;">
+        <a class="badge badge-warning" [routerLink]="['/plates', currentPlate.id ]" *ngIf="isPlateFromCurrentUser" style="color: black;text-decoration: none;">
           Éditer
+        </a>
+        <a class="badge badge-warning" [routerLink]="['/users', currentPlate.id ]" *ngIf="isPlateFromCurrentUser && currentPlate.reserved" style="color: black;background-color: mediumaquamarine;text-decoration: none;margin-left: 5px;">
+          Réservé par
         </a>
       </div>
   

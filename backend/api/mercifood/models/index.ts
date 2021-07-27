@@ -83,11 +83,11 @@ export class SequelizeManager implements SequelizeManagerProps {
         props.User.hasMany(props.Plate);
         props.Plate.belongsTo(props.User);
 
-        props.User.hasMany(props.Reservation);
-        props.Reservation.belongsTo(props.User);
-        
         props.Plate.hasMany(props.Reservation);
         props.Reservation.belongsTo(props.Plate);
+
+        props.User.hasMany(props.Reservation);
+        props.Reservation.belongsTo(props.User);
         
         props.Reservation.hasMany(props.Evaluation);
         props.Evaluation.belongsTo(props.Reservation);

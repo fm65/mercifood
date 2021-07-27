@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlateService } from 'src/app/services/plate.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { PlateProps } from '../../../../../../backend/api/mercifood/models/plate.model';
 
@@ -20,8 +21,10 @@ export class PlateListComponent implements OnInit {
   currentUser: any;
   isPlateFromCurrentUser = false;
   message = '';
+  reserved = false;
 
   constructor(private plateService: PlateService,
+              private reservationService: ReservationService,
               private token: TokenStorageService) { }
 
   ngOnInit(): void {
@@ -57,7 +60,7 @@ export class PlateListComponent implements OnInit {
     if (this.currentPlate.User.id == this.currentUser.id) {
       this.isPlateFromCurrentUser = true;
     }
-    console.log(this.currentPlate)
+    //console.log(this.currentPlate)
   }
 
   removePlate(by: any): void {
@@ -109,7 +112,25 @@ export class PlateListComponent implements OnInit {
         response => {
           console.log(response);
           this.message = response.message ? response.message : 'Ce plat a été réservé avec succès!';
-          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
+        this.saveReservation();
+        this.refreshList();
+  }
+
+  saveReservation(): void {
+    const data = {
+      plateId: this.currentPlate.id,
+      received: false
+    };
+
+    this.reservationService.create(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.reserved = true;
         },
         error => {
           console.log(error);

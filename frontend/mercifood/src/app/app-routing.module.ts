@@ -10,6 +10,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { AddPlateComponent } from './components/add-plate/add-plate.component';
 import { PlateListComponent } from './components/plate-list/plate-list.component';
 import { PlateDetailsComponent } from './components/plate-details/plate-details.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'add-plate', component: AddPlateComponent },
   { path: 'plates', component: PlateListComponent },
   { path: 'plates/:id', component: PlateDetailsComponent },
+  { path: 'users/:id', component: UserDetailsComponent },
   //{ path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

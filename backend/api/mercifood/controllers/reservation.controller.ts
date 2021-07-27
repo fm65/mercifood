@@ -35,9 +35,10 @@ export class ReservationController {
     public async getAll(): Promise<ReservationInstance[] | null> {
  
         const reservations = await this.Reservation.findAll({
-            attributes: ['id', 'date', 'received'],
-            include: [{ model: this.Plate, attributes: ['id', 'name', 'photo', 'quantity', 'comment'], 
-            include: [{ model: this.User, attributes: ['id', 'username', 'firstname', 'lastname']}]}]
+            attributes: ['id', 'date', 'received', 'UserId', 'PlateId'],
+            include: [{ model: this.User, attributes: ['id', 'username', 'firstname', 'lastname', 'address', 'cantEat'],
+            include: [{ model: this.Plate, attributes: ['id', 'name', 'photo', 'quantity', 'comment'] 
+            }]}]
         });
         return reservations;
     }
@@ -49,7 +50,7 @@ export class ReservationController {
             return null; //TODO
         }else{
             reservation = await this.Reservation.findOne({
-                attributes: ['id', 'date', 'received'],
+                attributes: ['id', 'date', 'received', 'UserId', 'PlateId'],
                 where: { id },
                 include: [{ model: this.Plate, attributes: ['id', 'name', 'photo', 'quantity', 'comment'], 
                 include: [{ model: this.User, attributes: ['id', 'username', 'firstname', 'lastname']}]}]
@@ -60,7 +61,8 @@ export class ReservationController {
         }
         return null;
     }
- 
+    
+    /*
     public async create(props: ReservationCreationProps, plateId: number): Promise<ReservationInstance | null> {
 
         const plate  = await this.Plate.findOne({where: { id: plateId }});
@@ -69,6 +71,22 @@ export class ReservationController {
         }
         const reservation = await this.Reservation.create(props);
         await reservation.setPlate(plate);
+        return reservation;
+    }*/
+
+    public async create(props: ReservationCreationProps, plateId: number, req: Request, res: Response): Promise<ReservationInstance | null> {
+
+        const user = await getLoggedUser(req);
+        if (user === null) {
+            return null
+        }
+        const plate  = await this.Plate.findOne({where: { id: plateId }});
+        if (plate === null) {
+            return null
+        }
+        const reservation = await this.Reservation.create(props);
+        await reservation.setPlate(plate);
+        await reservation.setUser(user);
         return reservation;
     }
 

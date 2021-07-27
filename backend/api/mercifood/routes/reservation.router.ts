@@ -23,7 +23,7 @@ reservationRouter.post("/", isAuth,
             date,
             received
         },
-        plateId
+        plateId, req, res
         );
     if(reservation !== null) {
         res.status(201).json(reservation).end();
