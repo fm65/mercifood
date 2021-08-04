@@ -2,12 +2,35 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="planning_interface:jar" />
+      <artifact name="planning:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/planning_plugin_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/plugins/AppPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/plugins/Plugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/plugins/PluginImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/plugins/SamplePluginImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/mercifood/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/mercifood/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/planning_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/planning_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/planning_jar/planning.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/view/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/view/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/view/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/planning.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Project.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,44 +51,48 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="ProjectId" id="1sMCn1WjW6RfPbUG6U0sBAgcXGH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/view/Home.fxml" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="project.structure.side.proportion" value="0.2382199" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Halisia\Desktop\projects\mercifood\backend\java\planning\src\main\plugins" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\mercifood_plugin" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Halisia\Desktop\projects\mercifood\backend\java\planning\plugins" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning" />
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="plugins" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.AppInterface">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -82,6 +109,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AppPlugin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="plugins.AppPlugin" />
+      <module name="planning" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="plugins.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="mysql-connector-java-5.0.5-bin.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/lib/mysql-connector-java-5.0.5-bin.jar" />
       <method v="2" />
@@ -90,10 +130,12 @@
       <list>
         <item itemvalue="Application.AppInterface" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.AppPlugin" />
         <item itemvalue="JAR Application.mysql-connector-java-5.0.5-bin.jar" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -106,5 +148,21 @@
       <updated>1620673234676</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

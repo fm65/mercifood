@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-public class HomeController {
+public class HomeController  {
 
     @FXML
     private TableView<Project> tableView_project;
@@ -49,8 +49,6 @@ public class HomeController {
     @FXML
     private Button delete_project_btn;
 
-
-
     @FXML
     private void initialize() {
         /*
@@ -75,7 +73,6 @@ public class HomeController {
     }
 
     public void showProjectDetails(Project project) {
-
         if(project != null)  {
             name_project_label.setText(project.getName());
             deadline_project_label.setText(project.getDeadline() != null  ? project.getDeadline().toString() : "");
