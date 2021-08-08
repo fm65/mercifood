@@ -1,9 +1,10 @@
 package plugins;
 
-public interface Plugin {
-    boolean load();
+import javafx.scene.control.Button;
+import models.Project;
 
-//    Label recuperetTrucJavaFx();
-//
-//    void executeAction();
+public interface Plugin {
+    Button getPluginButton();
+
+    void setProject(Project project);
 }

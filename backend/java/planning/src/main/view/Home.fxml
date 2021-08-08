@@ -65,8 +65,9 @@
                               <Button fx:id="delete_project_btn" mnemonicParsing="false" onAction="#handleDeleteProject" text="Delete" />
                           </buttons>
                         </ButtonBar>
-                        <ButtonBar fx:id="plugin_btn_place" layoutX="231.0" layoutY="437.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-                        <Label fx:id="plugin_label_place" layoutX="14.0" layoutY="458.0" text="Label" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+                        <ButtonBar fx:id="button_bar_place" layoutX="231.0" layoutY="437.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Button fx:id="add_plugin_btn" layoutX="14.0" layoutY="454.0" mnemonicParsing="false" onAction="#handleAddAPlugin" text="Add a plugin..." />
+                        <Label fx:id="label_place" layoutX="14.0" layoutY="363.0" prefHeight="17.0" prefWidth="106.0" />
                      </children>
                   </AnchorPane>
               </items>
