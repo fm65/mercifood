@@ -6,18 +6,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Member;
 import models.Project;
 import models.Task;
+import plugins.Plugin;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.jar.JarFile;
 
-public class HomeController  {
+public class HomeController {
+    static final String PLUGIN_FOLDER = "plugins";
 
     @FXML
     private TableView<Project> tableView_project;
@@ -50,6 +59,19 @@ public class HomeController  {
     private Button delete_project_btn;
 
     @FXML
+    private ButtonBar button_bar_place = new ButtonBar();
+
+    @FXML
+    private Button print_btn;
+
+    @FXML
+    private Button add_plugin_btn;
+
+    @FXML
+    private Label label_place;
+
+
+    @FXML
     private void initialize() {
         /*
         Set the projects table
@@ -73,19 +95,20 @@ public class HomeController  {
     }
 
     public void showProjectDetails(Project project) {
-        if(project != null)  {
+
+        if (project != null) {
             name_project_label.setText(project.getName());
-            deadline_project_label.setText(project.getDeadline() != null  ? project.getDeadline().toString() : "");
+            deadline_project_label.setText(project.getDeadline() != null ? project.getDeadline().toString() : "");
             nextAppointment_project_label.setText(project.getNextAppointment() != null ? project.getNextAppointment().toString() : "");
 
             String membersNames = "";
-            for(Member member:project.getMembers()) {
+            for (Member member : project.getMembers()) {
                 membersNames += " - " + member.getName() + "\n";
             }
             members_project_label.setText("\n" + membersNames + "\n");
 
             String tasksNames = "";
-            for(Task task:project.getTasks()) {
+            for (Task task : project.getTasks()) {
                 tasksNames += " - " + task.getName() + "\n";
             }
             tasks_project_label.setText("\n" + tasksNames + "\n");
@@ -101,11 +124,11 @@ public class HomeController  {
 
     @FXML
     private void handleNewProject() throws IOException, SQLException {
-        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        PrintWriter printWriter = new PrintWriter("logs.txt");
         try {
             Project newProject = new Project("New Project");
 
-            String sql = "INSERT INTO project (name, deadline, nextAppointment, id_home) VALUES ('"+newProject.getName()+"', "+ null+", "+null+", 1);";
+            String sql = "INSERT INTO project (name, deadline, nextAppointment, id_home) VALUES ('" + newProject.getName() + "', " + null + ", " + null + ", 1);";
             Database.insertInto(sql);
 
             boolean okClicked = HomeController.showProjectEdit(newProject);
@@ -133,7 +156,7 @@ public class HomeController  {
 
     @FXML
     private void handleDeleteProject() throws Exception {
-        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        PrintWriter printWriter = new PrintWriter("logs.txt");
         try {
             int selectedIndex = tableView_project.getSelectionModel().getSelectedIndex();
             Project project = tableView_project.getSelectionModel().getSelectedItem();
@@ -152,8 +175,76 @@ public class HomeController  {
     }
 
     @FXML
+    private void handleAddAPlugin() throws Exception {
+        PrintWriter printWriter = new PrintWriter("logs.txt");
+        try {
+            Stage mainStage = new Stage();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Resource File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Jar Files", "*.jar"));
+            File selectedFile = fileChooser.showOpenDialog(mainStage);
+            if (selectedFile != null) {
+                loadPlugin(selectedFile);
+            }
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
+        }
+
+    }
+
+    private void loadPlugin(File file) throws FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter("logs.txt");
+        try {
+            ArrayList<URL> urls = new ArrayList<>();
+            ArrayList<String> classes = new ArrayList<>();
+
+            JarFile jarFile = new JarFile(file);
+            urls.add(new URL("jar:file:" + PLUGIN_FOLDER + "/" + file.getName() + "!/"));
+            jarFile.stream().forEach(jarEntry -> {
+                if (jarEntry.getName().endsWith(".class")) {
+                    classes.add(jarEntry.getName());
+                }
+            });
+            URLClassLoader pluginLoader = new URLClassLoader(urls.toArray(new URL[urls.size()]));
+            classes.stream()
+                    .forEach(s -> {
+                        try {
+                            Class classs = pluginLoader.loadClass(s.replaceAll("/", ".").replace(".class", ""));
+                            Class[] interfaces = classs.getInterfaces();
+                            for (Class anInterface : interfaces) {
+
+                                if (anInterface == Plugin.class) {
+                                    System.out.println(anInterface.getCanonicalName());
+                                    Plugin plugin = (Plugin) classs.getDeclaredConstructor().newInstance();
+
+                                    Project project = tableView_project.getSelectionModel().getSelectedItem();
+                                    System.out.println("Loaded plugin successfully");
+                                    Button button = plugin.getPluginButton();
+
+                                    ButtonBar.setButtonData(button, ButtonBar.ButtonData.YES);
+                                    button_bar_place.getButtons().removeAll();
+                                    button_bar_place.getButtons().add(button);
+                                    plugin.setProject(project);
+
+                                    break;
+                                }
+                            }
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    });
+            System.out.println("Application stopped.");
+        } catch (Error | Exception e) {
+            printWriter.println(e);
+            printWriter.close();
+        }
+    }
+
+    @FXML
     public static boolean showProjectEdit(Project project) throws IOException {
-        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        PrintWriter printWriter = new PrintWriter("logs.txt");
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();

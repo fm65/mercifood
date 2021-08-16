@@ -5,12 +5,16 @@ import models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Database {
 
@@ -346,6 +350,48 @@ public class Database {
             printWriter.println(e);
             printWriter.close();
         }
+    }
+
+    /*
+    Get data for plugins
+     */
+    public static Map<String,Integer> getTaskDays(Project currentProject) throws FileNotFoundException {
+
+        Map<String,Integer> taskDays = new HashMap<>();
+
+        PrintWriter printWriter = new PrintWriter ("logs.txt");
+        try {
+                String sqlProject = "SELECT * FROM task WHERE id_project = "+ getProjectId(currentProject.getName());
+                Statement st = connection.createStatement();
+
+
+                ResultSet result = st.executeQuery(sqlProject);
+
+                String taskName;
+                LocalDate creationDate;
+                LocalDate deadline;
+
+                while ( result.next() ) {
+                    if(result.getString("name") != null && result.getString("deadline") != null && result.getString("creationDate") != null) {
+                        taskName = result.getString("name");
+                        creationDate = LocalDate.parse(result.getString("creationDate"));
+                        deadline = LocalDate.parse(result.getString("deadline"));
+
+                        Integer daysBetween = (int)ChronoUnit.DAYS.between(creationDate, deadline);
+                        taskDays.put(taskName, daysBetween);
+                        System.out.println(taskName + " " +daysBetween);
+                    }
+
+                }
+
+        } catch (Error | Exception e) {
+
+            System.out.println(e);
+            printWriter.println(e);
+            printWriter.close();
+        }
+        return taskDays;
+
     }
 
 
