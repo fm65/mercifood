@@ -34,7 +34,7 @@
   <div class="menu" *ngIf="isLoggedIn">
     <a [routerLink]="'/add-plate'">Partager un plat</a>
     <a [routerLink]="'/plates'">Plats à réserver</a>
-    <a href="#">Link 3</a>
+    <a [routerLink]="'/chat'">Chat</a>
     <a href="#">Link 4</a>
   </div>
   <div class="noconmenu" *ngIf="!isLoggedIn">

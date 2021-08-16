@@ -12,6 +12,7 @@ import { PlateListComponent } from './components/plate-list/plate-list.component
 import { PlateDetailsComponent } from './components/plate-details/plate-details.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'editprofile', component: EditProfileComponent },
   { path: 'add-plate', component: AddPlateComponent },
   { path: 'plates', component: PlateListComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'plates/:id', component: PlateDetailsComponent },
   { path: 'users/:id', component: UserDetailsComponent },
   //{ path: 'admin', component: BoardAdminComponent },

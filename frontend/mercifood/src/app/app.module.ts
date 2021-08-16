@@ -19,6 +19,7 @@ import { PlateListComponent } from './components/plate-list/plate-list.component
 import { AddPlateComponent } from './components/add-plate/add-plate.component';
 import { PlateDetailsComponent } from './components/plate-details/plate-details.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     PlateListComponent,
     AddPlateComponent,
     PlateDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import plateCreator, {PlateInstance}             from "./plate.model";
 import recipeCreator, {RecipeInstance}           from "./recipe.model";
 import reservationCreator, {ReservationInstance} from "./reservation.model";
 import evaluationCreator, {EvaluationInstance}   from "./evaluation.model";
+import messageCreator, {MessageInstance}   from "./message.model";
 
 export interface SequelizeManagerProps {
     sequelize      : Sequelize;
@@ -15,6 +16,7 @@ export interface SequelizeManagerProps {
     Recipe         : ModelCtor<RecipeInstance>;
     Reservation         : ModelCtor<ReservationInstance>;
     Evaluation     : ModelCtor<EvaluationInstance>;
+    Message     : ModelCtor<MessageInstance>;
 }
 
 export class SequelizeManager implements SequelizeManagerProps {
@@ -28,6 +30,7 @@ export class SequelizeManager implements SequelizeManagerProps {
     Recipe         : ModelCtor<RecipeInstance>;
     Reservation         : ModelCtor<ReservationInstance>;
     Evaluation     : ModelCtor<EvaluationInstance>;
+    Message        : ModelCtor<MessageInstance>;
 
     private constructor(props: SequelizeManagerProps) {
         this.sequelize       = props.sequelize;
@@ -37,6 +40,7 @@ export class SequelizeManager implements SequelizeManagerProps {
         this.Recipe          = props.Recipe;
         this.Reservation          = props.Reservation;
         this.Evaluation      = props.Evaluation;
+        this.Message         = props.Message;
     }
 
     public static async getInstance(): Promise<SequelizeManager> {
@@ -69,7 +73,8 @@ export class SequelizeManager implements SequelizeManagerProps {
             Plate          : plateCreator(sequelize),
             Recipe         : recipeCreator(sequelize),
             Reservation         : reservationCreator(sequelize),
-            Evaluation     : evaluationCreator(sequelize)
+            Evaluation     : evaluationCreator(sequelize),
+            Message        :messageCreator(sequelize)
         }
         SequelizeManager.associate(managerProps);
         await sequelize.sync();
@@ -91,5 +96,8 @@ export class SequelizeManager implements SequelizeManagerProps {
         
         props.Reservation.hasMany(props.Evaluation);
         props.Evaluation.belongsTo(props.Reservation);
+
+        props.User.hasMany(props.Message);
+        props.Message.belongsTo(props.User);
     }
 }

@@ -4,6 +4,7 @@ import {plateRouter}       from "./plate.router";
 import {userRouter}        from "./user.router";
 import {reservationRouter} from "./reservation.router";
 import {recipeRouter} from "./recipe.router";
+import {messageRouter} from "./message.router";
 /*
 import {recipeRouter} from "./recipe.router";
 import { evaluationRouter } from "./evaluation.router";
@@ -15,6 +16,7 @@ export function buildRoutes(app: Express) {
     app.use("/users", userRouter);
     app.use("/reservations", reservationRouter);
     app.use("/recipes", recipeRouter);
+    app.use("/messages", messageRouter);
     /*app.use("/evaluations", evaluationRouter);
     */
 }
