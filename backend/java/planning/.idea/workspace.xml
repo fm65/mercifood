@@ -5,9 +5,22 @@
       <artifact name="planning_interface:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/plugins/AppPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/plugins/SamplePluginImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/planning.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugins/AppPlugin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugins/Plugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/Plugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugins/PluginImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/PluginImp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugins/PluginImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/PluginImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugins/SamplePluginImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +41,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="ProjectId" id="1sMCn1WjW6RfPbUG6U0sBAgcXGH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../mercifood/mercifood/backend/java/planning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -55,18 +75,6 @@
       <recent name="C:\Users\Halisia\Desktop\ESGI\3AL\S2\PROJET_ANNUEL\planning\src\main\view" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Application.AppInterface">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
@@ -78,6 +86,7 @@
     <configuration name="AppInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AppInterface" />
       <module name="planning" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Halisia\Downloads\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,6 +108,12 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/lib/mysql-connector-java-5.0.5-bin.jar" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.AppInterface" />
+      <item itemvalue="Application.AppPlugin" />
+      <item itemvalue="JAR Application.mysql-connector-java-5.0.5-bin.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AppInterface" />
@@ -108,6 +123,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -120,5 +136,16 @@
       <updated>1620673234676</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
