@@ -1,0 +1,55 @@
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.button-blue {
+    -fx-background-color: linear-gradient(#3E94F5, #3E94F5);
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.button-green {
+    -fx-background-color: #61D13A;
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.button-grey {
+    -fx-background-color: #E3E3E3;
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+    -fx-text-fill: black;
+}
+
+.background {
+    -fx-background-color: white;
+}
+
+.background-dark {
+    -fx-background-color: #3B3B3B;
+}
+
+
+.button-red {
+    -fx-background-color: linear-gradient(#ff5400, #ff5400);
+    -fx-background-radius: 5;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+
+.title {
+-fx-font-weight: bold;
+}
+
+.list {
+    -fx-text-fill: dark-grey;
+    -fx-text-padding: 5;
+}
+
