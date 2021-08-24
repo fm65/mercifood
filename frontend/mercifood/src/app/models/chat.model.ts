@@ -1,3 +1,5 @@
+import { MessageProps } from "../../../../../backend/api/mercifood/models/message.model";
+
 export class Chat {
     conversation: Conversation[];
 }
@@ -8,8 +10,8 @@ export class User {
 }
 
 export class Conversation {
-    interlocutor: User;
-    messageList: Message[]
+    interlocutor: string;
+    messageList: MessageProps[]
 }
 
 export class Message {
@@ -17,6 +19,4 @@ export class Message {
     sendDate: Date;
     sender: string;
     recipient: string;
-
-
 }

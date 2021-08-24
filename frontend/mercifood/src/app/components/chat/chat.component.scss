@@ -1,0 +1,80 @@
+.chat_page{
+   display: inline-flex;
+
+}
+
+h4 {
+   margin-top: 20px;
+}
+
+.message_history{
+   position: relative;
+    background: rgb(245, 245, 245);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+ }
+
+ .senderMessage{
+   background : rgb(151, 255, 195); 
+   padding :15px 30px;
+   margin : 5px;
+   text-align : right;
+ }
+
+ .senderMessageDate{
+   text-align:right;
+   font-size :10px;
+   padding : 0px 10px;
+ }
+
+ .recipientMessageDate{
+   font-size :10px;
+   padding : 0px 10px;
+ }
+
+ .recipientMessage {
+   background : 'white';
+   padding :'15px 30px';
+   margin : '5px';
+ }
+
+ .chat-messages-show-list {
+    position: relative;
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+ }
+ .message_create{
+    position: relative;
+    background: #e7e7e7;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    border : 2px solid white;
+ }
+ .message_input {
+    position: relative;
+    padding: 12px;
+    margin: 29px 30px;
+    flex:2
+ }
+ .message_button {
+    height: 50px;
+    margin: auto 40px;
+    width: 100px;
+ }
+
+ .chat-left {
+    padding:10px;
+    background-color:rgb(211, 211, 211)
+ }
+
+ .chat-right {
+    width:400px;
+ }
+
+ .chat_conversations {
+    margin-top:20px;
+ }

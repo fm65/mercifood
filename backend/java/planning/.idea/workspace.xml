@@ -9,18 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/plugins/AppPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/plugins/SamplePluginImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/planning.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugins/AppPlugin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugins/Plugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/Plugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugins/PluginImp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/PluginImp$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugins/PluginImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugins/PluginImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugins/SamplePluginImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeController.class" afterDir="false" />
-    </list>
+    <list default="true" id="0792c01a-8a87-4266-8a64-075f1287816a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,5 +136,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

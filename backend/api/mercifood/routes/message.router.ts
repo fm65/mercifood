@@ -10,6 +10,8 @@ import { User } from "../models/chat.model";
 const messageRouter = express.Router();
 
 messageRouter.post("/", isAuth,
+        check('text').isLength({ max: 255 }),
+        check('text').isLength({ min: 1 }),
     async function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

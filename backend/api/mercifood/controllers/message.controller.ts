@@ -95,10 +95,8 @@ export class MessageController {
             if (interlocutor && m.sender) {
                 if (!mapConversations.has(interlocutor)) {
                     mapConversations.set(interlocutor, new Conversation(interlocutor))
-                    console.log('3');
                 } 
                 mapConversations.get(interlocutor)?.messageList.push(new Message(m, m.sender));
-                console.log('4');
             }
         });
         
@@ -107,7 +105,7 @@ export class MessageController {
 
     public async create(props: MessageCreationProps, recipientUsername: string, senderUsername: string, req: Request, res: Response): Promise<MessageInstance | null> {
         const sender = await getLoggedUser(req);
-        if (sender === null || sender.username != senderUsername) {
+        if (sender === null || sender.username != senderUsername || sender.username == recipientUsername) {
             return null
         }
         
