@@ -17,7 +17,7 @@ const SOCKET_ENDPOINT = 'http://localhost:3001';
 export class ChatComponent implements OnInit {
   socket: any;
   lastRecipient: string;
-  lastConversation:Conversation;
+  lastConversation: Conversation;
   test: string;
   chat: Conversation[];
   users: string[];
@@ -44,6 +44,8 @@ export class ChatComponent implements OnInit {
   async ngOnInit() {
     this.sendMessage();
     this.setupSocketConnection();
+
+    //effacer les messages lorsqu'on entamme une nouvelle discussion
     document.getElementById("recipient").addEventListener('input', this.updateInput.bind(this));
     this.conversation = { "interlocutor": "", "messageList": [] }
     this.retrieveConversations();
@@ -60,7 +62,6 @@ export class ChatComponent implements OnInit {
         error => {
           console.log(error);
         });
-
   }
 
   retriveMessages(): void {
@@ -110,8 +111,8 @@ export class ChatComponent implements OnInit {
 
       if (data) {
         console.log(data)
-        if(this.conversation === undefined)
-        this.conversation = this.chat.find(conv=>conv.interlocutor === data.sender); 
+        if (this.conversation === undefined)
+          this.conversation = this.chat.find(conv => conv.interlocutor === data.sender);
         if (this.currentUser.username == data.recipient && this.conversation.interlocutor === data.sender) {
           const element = document.createElement('li');
           element.innerHTML = data.sender + ": " + data.text;
@@ -122,12 +123,12 @@ export class ChatComponent implements OnInit {
           this.applyMessageStyle("recipient", element, date)
           document.getElementById('message-list').appendChild(element);
           document.getElementById('message-list').appendChild(date);
-          
-        }   
-        else {
-          this.setActiveConversation(this.chat[this.chat.length -1])
+
         }
-  
+        else {
+          this.setActiveConversation(this.chat[this.chat.length - 1])
+        }
+
       }
     });
   }
@@ -165,20 +166,16 @@ export class ChatComponent implements OnInit {
     const element = document.createElement('li');
     element.innerHTML = this.message.text;
 
-
-
     const date = document.createElement('li');
     date.innerHTML = this.setDateString(data.sendDate);
-
 
     this.message.text = '';
     this.message.recipient = "",
       this.messageService.create(data)
         .subscribe(
-          response => { 
-            //if(this.conversation.messageList.length <= 1) 
+          response => {
             this.setActiveConversation(this.chat.find(conv => conv.interlocutor === data.recipient));
-            
+
             this.socket.emit('message', response);
             console.log(response);
 
@@ -192,7 +189,6 @@ export class ChatComponent implements OnInit {
           error => {
             console.log(error);
           });
-
   }
 
   applyMessageStyle(user: string, element: HTMLLIElement, date: HTMLLIElement): void {
@@ -229,5 +225,4 @@ export class ChatComponent implements OnInit {
       date.style.position = 'relative';
     }
   }
-
 }

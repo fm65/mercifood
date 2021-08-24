@@ -19,6 +19,8 @@ public class PluginImp implements Plugin {
     public Button getPluginButton() {
         Button button = new Button();
         button.setText("Task time view");
+        button.setStyle("-fx-background-color: #E3E3E3; -fx-fill: black; -fx-background-radius: 5; -fx-background-insets: 0;");
+        //button.setStyle("-fx-background-color:" + "#E3E3E3" + "; -fx-fill:" + "black"+"; -fx-background-radius: "+5+"; -fx-background-insets: "+0+";\")");
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e)
             {

@@ -59,7 +59,8 @@ public class ProjectTasksController {
 
         tasks_task_column = new TableColumn<>();
         tasks_task_column.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        tableView_task.getColumns().add(tasks_task_column);
+        tasks_task_column.setText("Tasks");
+        tableView_task.getColumns().set(0,tasks_task_column);
         tableView_task.setItems(this.project.getTasksView());
 
         showTaskDetails(null);
@@ -166,6 +167,9 @@ public class ProjectTasksController {
             TaskEditController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setTask(task);
+            if(task.getOwner() != null) {
+                task.getOwner().getTasks().remove(task);
+            }
 
             dialogStage.showAndWait();
             return controller.isOkClicked();

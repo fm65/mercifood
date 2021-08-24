@@ -15,7 +15,7 @@
 }
 
 .button-green {
-    -fx-background-color: #61D13A;
+    -fx-background-color: #3ABA1D;
     -fx-background-radius: 5;
     -fx-background-insets: 0;
     -fx-text-fill: white;
@@ -36,6 +36,9 @@
     -fx-background-color: #3B3B3B;
 }
 
+.background-blue {
+    -fx-background-color: #F0F3F4;
+}
 
 .button-red {
     -fx-background-color: linear-gradient(#ff5400, #ff5400);
@@ -49,7 +52,7 @@
 }
 
 .list {
-    -fx-text-fill: dark-grey;
+    -fx-text-fill: black;
     -fx-text-padding: 5;
 }
 

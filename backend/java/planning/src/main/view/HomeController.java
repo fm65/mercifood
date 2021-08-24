@@ -76,13 +76,16 @@ public class HomeController {
         /*
         Set the projects table
          */
+
+
         edit_project_btn.setOpacity(0);
         delete_project_btn.setOpacity(0);
         add_plugin_btn.setOpacity(0);
         projects_project_column = new TableColumn<>();
+        projects_project_column.setText("Projects");
         projects_project_column.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-
-        tableView_project.getColumns().add(projects_project_column);
+        tableView_project.getColumns().set(0,projects_project_column
+        );
         tableView_project.setItems(Database.getProjectsView());
 
         /*

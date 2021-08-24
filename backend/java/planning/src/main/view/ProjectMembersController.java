@@ -51,7 +51,8 @@ public class ProjectMembersController {
 
         members_member_column = new TableColumn<>();
         members_member_column.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        tableView_member.getColumns().add(members_member_column);
+        members_member_column.setText("Members");
+        tableView_member.getColumns().set(0,members_member_column);
         tableView_member.setItems(this.project.getMembersView());
 
         showMemberDetails(null);
