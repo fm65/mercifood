@@ -105,7 +105,6 @@ export class ChatComponent implements OnInit {
   }
 
   setupSocketConnection(): void {
-    // this.retrieveConversations();
     this.socket = io(SOCKET_ENDPOINT);
     this.socket.on('message-broadcast', (data: MessageProps) => {
 
@@ -114,7 +113,6 @@ export class ChatComponent implements OnInit {
         if(this.conversation === undefined)
         this.conversation = this.chat.find(conv=>conv.interlocutor === data.sender); 
         if (this.currentUser.username == data.recipient && this.conversation.interlocutor === data.sender) {
-
           const element = document.createElement('li');
           element.innerHTML = data.sender + ": " + data.text;
 
@@ -125,8 +123,9 @@ export class ChatComponent implements OnInit {
           document.getElementById('message-list').appendChild(element);
           document.getElementById('message-list').appendChild(date);
           
-        } else {
-          this.setActiveConversation(this.conversation)
+        }   
+        else {
+          this.setActiveConversation(this.chat[this.chat.length -1])
         }
   
       }
